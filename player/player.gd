@@ -10,7 +10,7 @@ signal velocity_change
 @onready var front_ray_cast: RayCast2D = %FrontRayCast
 @onready var top_ray_cast: RayCast2D = %TopRayCast
 @onready var coyote_time: Timer = %CoyoteTime
-@onready var climbing_timeout: Timer = %ClimbingTimeout
+@onready var climbing_timeout: ClimbingTimer = %ClimbingTimeout
 
 var state := STATES.IDLE
 var direction := 0.0
@@ -29,14 +29,22 @@ func _physics_process(_delta : float) -> void:
 	
 	if Input.is_action_just_pressed("jump") and \
 			state in [STATES.JUMPING, STATES.FALLING] and can_ledge_grab():
+		climbing_timeout.start()
 		change_state.emit(STATES.CLIMBING)
 	
-	if Input.is_action_just_pressed("jump") and \
+	elif Input.is_action_just_pressed("jump") and \
 			state in [STATES.IDLE, STATES.WALKING, STATES.COYOTE]:
 		change_state.emit(STATES.JUMPING)
 		
 	if Input.is_action_just_released("jump") and state == STATES.JUMPING:
 		velocity.y = 0.0
+		
+	if state == STATES.CLIMBING:
+		if climbing_timeout.is_stopped() or Input.is_action_just_pressed("drop_down"):
+			climbing_timeout.stop()
+			change_state.emit(STATES.FALLING)
+		elif climbing_timeout.is_grace_over() and Input.is_action_just_pressed("jump"):
+			climb_up()
 		
 	coyote_check()
 	
@@ -56,7 +64,10 @@ func can_ledge_grab() -> bool:
 
 
 func coyote_check() -> void:
-	if not coyote_time.is_stopped() or get_real_velocity().y < 0.0 or is_on_floor():
+	if not coyote_time.is_stopped() or \
+	get_real_velocity().y < 0.0 or \
+	is_on_floor() or \
+	state == STATES.CLIMBING:
 		return
 	
 	if state in [STATES.WALKING, STATES.SPRINTING]:
