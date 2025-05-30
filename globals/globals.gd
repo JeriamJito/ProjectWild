@@ -1,0 +1,11 @@
+extends Node
+
+enum STATES {
+	IDLE,
+	WALKING,
+	SPRINTING,
+	JUMPING,
+	FALLING,
+	CLIMBING,
+	COYOTE
+}
