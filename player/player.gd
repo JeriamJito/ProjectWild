@@ -45,6 +45,9 @@ func _physics_process(_delta : float) -> void:
 			change_state.emit(STATES.FALLING)
 		elif Input.is_action_just_pressed("jump"):
 			climb_up()
+			
+	if state in [STATES.IDLE, STATES.WALKING] and not climbing_timeout.is_stopped():
+		climbing_timeout.stop()
 		
 	coyote_check()
 	
