@@ -10,6 +10,7 @@ signal velocity_change
 @onready var front_ray_cast: RayCast2D = %FrontRayCast
 @onready var top_ray_cast: RayCast2D = %TopRayCast
 @onready var coyote_time: Timer = %CoyoteTime
+@onready var climbing_timeout: Timer = %ClimbingTimeout
 
 var state := STATES.IDLE
 var direction := 0.0
@@ -29,10 +30,6 @@ func _physics_process(_delta : float) -> void:
 	if Input.is_action_just_pressed("jump") and \
 			state in [STATES.JUMPING, STATES.FALLING] and can_ledge_grab():
 		change_state.emit(STATES.CLIMBING)
-		var location = top_ray_cast.get_collision_point()
-		var shape : CapsuleShape2D = collision_shape_2d.shape
-		location.y -= shape.height * 0.5
-		global_position = location
 	
 	if Input.is_action_just_pressed("jump") and \
 			state in [STATES.IDLE, STATES.WALKING, STATES.COYOTE]:
@@ -68,3 +65,10 @@ func coyote_check() -> void:
 		return
 	
 	change_state.emit(STATES.FALLING)
+
+
+func climb_up() -> void:
+	var location = top_ray_cast.get_collision_point()
+	var shape : CapsuleShape2D = collision_shape_2d.shape
+	location.y -= shape.height * 0.5
+	global_position = location

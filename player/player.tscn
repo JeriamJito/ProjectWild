@@ -61,3 +61,7 @@ target_position = Vector2(0, 100)
 unique_name_in_owner = true
 wait_time = 0.05
 one_shot = true
+
+[node name="ClimbingTimeout" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true

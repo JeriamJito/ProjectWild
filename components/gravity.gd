@@ -37,8 +37,9 @@ func calculate_jump_values() -> void:
 
 
 func _physics_process(_delta : float) -> void:
+	if parent.state == STATES.CLIMBING:
+		return
 	move_vertical()
-	parent.move_and_slide()
 
 
 func move_vertical() -> void:

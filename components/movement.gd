@@ -5,7 +5,7 @@ const STATES = Globals.STATES
 
 @onready var parent : Actor = get_parent()
 
-@export var speed := 500.0
+@export var speed := 1000.0
 @export var acceleration := 2000.0
 
 func _physics_process(_delta : float) -> void:
