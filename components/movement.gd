@@ -15,10 +15,4 @@ func _physics_process(_delta : float) -> void:
 
 
 func move_lateral() -> void:
-	if parent.direction == 0.0:
-		parent.velocity.x = 0.0
-	else:
-		parent.velocity.x = move_toward(
-			parent.velocity.x,
-			parent.direction * speed,
-			acceleration * get_physics_process_delta_time())
+	parent.velocity.x = parent.direction * speed
