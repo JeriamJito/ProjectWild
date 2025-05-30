@@ -48,7 +48,8 @@ drag_bottom_margin = 0.0
 
 [node name="FrontRayCast" type="RayCast2D" parent="."]
 unique_name_in_owner = true
-target_position = Vector2(100, 0)
+position = Vector2(0, -30)
+target_position = Vector2(50, 0)
 
 [node name="TopRayCast" type="RayCast2D" parent="."]
 unique_name_in_owner = true
