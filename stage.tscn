@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://2153uolid3xb"]
+[gd_scene load_steps=6 format=3 uid="uid://2153uolid3xb"]
 
 [ext_resource type="PackedScene" uid="uid://dfipd6t0uiicv" path="res://player/player.tscn" id="1_6eo5e"]
+[ext_resource type="PackedScene" uid="uid://delifm0dbrp0n" path="res://components/grapple_point.tscn" id="1_rnkuw"]
 [ext_resource type="PackedScene" uid="uid://c05kl5ke1wrl3" path="res://debug/debug.tscn" id="2_aees8"]
+[ext_resource type="PackedScene" uid="uid://b3grspwqj5bit" path="res://components/whip_attach.tscn" id="4_16g40"]
+[ext_resource type="PackedScene" uid="uid://dqeh25s827j77" path="res://components/cursor.tscn" id="4_gx6sy"]
 
 [node name="Level" type="Node2D"]
 
@@ -12,15 +15,42 @@
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Stage/StaticBody2D"]
 polygon = PackedVector2Array(-41, 262, 83, 264, 85, 987, 539.922, 987, 534, 876, 655, 874, 653, 979, 893, 981, 886, 880, 1005, 882, 1008, 982, 2228, 987, 2226, 597, 2476, 600, 2478, 990, 2963, 992, 2951, 85, 3147, 83, 3138, 1196, -43, 1160)
 
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Stage/StaticBody2D"]
+position = Vector2(-16, -34)
+polygon = PackedVector2Array(704, 346, 760, 454, 840, 345)
+
+[node name="GrapplePoint" parent="Stage/StaticBody2D/CollisionPolygon2D2" instance=ExtResource("1_rnkuw")]
+position = Vector2(760, 441)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Stage/StaticBody2D"]
+position = Vector2(396, -34)
+polygon = PackedVector2Array(704, 346, 760, 454, 840, 345)
+
+[node name="GrapplePoint" parent="Stage/StaticBody2D/CollisionPolygon2D3" instance=ExtResource("1_rnkuw")]
+position = Vector2(760, 441)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Stage/StaticBody2D"]
+position = Vector2(811, -31)
+polygon = PackedVector2Array(704, 346, 760, 454, 840, 345)
+
+[node name="GrapplePoint" parent="Stage/StaticBody2D/CollisionPolygon2D4" instance=ExtResource("1_rnkuw")]
+position = Vector2(760, 441)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Debug" parent="CanvasLayer" instance=ExtResource("2_aees8")]
+
+[node name="Cursor" parent="CanvasLayer" instance=ExtResource("4_gx6sy")]
 
 [node name="Player" parent="." instance=ExtResource("1_6eo5e")]
 unique_name_in_owner = true
 position = Vector2(209, 907)
 
+[node name="WhipAttach" parent="." instance=ExtResource("4_16g40")]
+
 [connection signal="change_state" from="Player" to="CanvasLayer/Debug/VBoxContainer/PlayerState" method="_on_player_change_state"]
 [connection signal="velocity_change" from="Player" to="CanvasLayer/Debug/VBoxContainer/PlayerVelocity" method="_on_player_velocity_change"]
+[connection signal="set_grapple_point" from="Player/Whip" to="WhipAttach" method="_on_whip_set_grapple_point"]
 
 [editable path="CanvasLayer/Debug"]
+[editable path="Player"]

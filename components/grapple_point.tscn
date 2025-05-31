@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://delifm0dbrp0n"]
+
+[ext_resource type="Script" uid="uid://bpqwq52dm1x1r" path="res://components/grapple_point.gd" id="1_x72pe"]
+
+[node name="GrapplePoint" type="Marker2D" groups=["WhipTarget"]]
+script = ExtResource("1_x72pe")
