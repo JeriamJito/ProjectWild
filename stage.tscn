@@ -44,7 +44,7 @@ position = Vector2(760, 441)
 
 [node name="Player" parent="." instance=ExtResource("1_6eo5e")]
 unique_name_in_owner = true
-position = Vector2(209, 907)
+position = Vector2(2130, 902)
 
 [node name="WhipAttach" parent="." instance=ExtResource("4_16g40")]
 
