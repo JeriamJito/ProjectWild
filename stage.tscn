@@ -18,7 +18,7 @@ polygon = PackedVector2Array(-41, 262, 83, 264, 85, 987, 539.922, 987, 534, 876,
 
 [node name="Player" parent="." instance=ExtResource("1_6eo5e")]
 unique_name_in_owner = true
-position = Vector2(209, 907)
+position = Vector2(2130, 902)
 
 [connection signal="change_state" from="Player" to="CanvasLayer/Debug/VBoxContainer/PlayerState" method="_on_player_change_state"]
 [connection signal="velocity_change" from="Player" to="CanvasLayer/Debug/VBoxContainer/PlayerVelocity" method="_on_player_velocity_change"]

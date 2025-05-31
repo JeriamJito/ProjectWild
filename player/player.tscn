@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dfipd6t0uiicv"]
+[gd_scene load_steps=7 format=3 uid="uid://dfipd6t0uiicv"]
 
 [ext_resource type="Script" uid="uid://c72hkr6kj7ckv" path="res://player/player.gd" id="1_oul6g"]
 [ext_resource type="PackedScene" uid="uid://ckephimkda3cb" path="res://components/gravity.tscn" id="2_rkbax"]
 [ext_resource type="PackedScene" uid="uid://dlg10nup8rkuo" path="res://components/state_machine.tscn" id="3_g1dw6"]
 [ext_resource type="PackedScene" uid="uid://0e2015teptyf" path="res://components/movement.tscn" id="3_yw30f"]
+[ext_resource type="Script" uid="uid://b44ffe4rhpsj" path="res://player/climbing_timeout.gd" id="5_qjkh3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rkbax"]
 radius = 28.0
@@ -35,9 +36,6 @@ shape = SubResource("CapsuleShape2D_rkbax")
 [node name="Movement" parent="." instance=ExtResource("3_yw30f")]
 
 [node name="Gravity" parent="." instance=ExtResource("2_rkbax")]
-jump_height = 150.0
-jump_time_to_peak = 0.4
-jump_time_to_floor = 0.3
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(0, -200)
@@ -50,14 +48,20 @@ drag_bottom_margin = 0.0
 
 [node name="FrontRayCast" type="RayCast2D" parent="."]
 unique_name_in_owner = true
-target_position = Vector2(100, 0)
+position = Vector2(0, -30)
+target_position = Vector2(50, 0)
 
 [node name="TopRayCast" type="RayCast2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(0, -100)
-target_position = Vector2(0, 100)
+position = Vector2(0, -75)
+target_position = Vector2(0, 75)
 
 [node name="CoyoteTime" type="Timer" parent="."]
 unique_name_in_owner = true
 wait_time = 0.05
 one_shot = true
+
+[node name="ClimbingTimeout" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+script = ExtResource("5_qjkh3")

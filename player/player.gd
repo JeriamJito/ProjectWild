@@ -10,6 +10,7 @@ signal velocity_change
 @onready var front_ray_cast: RayCast2D = %FrontRayCast
 @onready var top_ray_cast: RayCast2D = %TopRayCast
 @onready var coyote_time: Timer = %CoyoteTime
+@onready var climbing_timeout: ClimbingTimer = %ClimbingTimeout
 
 var state := STATES.IDLE
 var direction := 0.0
@@ -25,14 +26,11 @@ func _physics_process(_delta : float) -> void:
 	
 	elif is_on_floor():
 		change_state.emit(STATES.WALKING)
-	
-	if Input.is_action_just_pressed("jump") and \
-			state in [STATES.JUMPING, STATES.FALLING] and can_ledge_grab():
+		
+	if state in [STATES.JUMPING, STATES.FALLING] and \
+			can_ledge_grab() and climbing_timeout.is_stopped():
+		climbing_timeout.start()
 		change_state.emit(STATES.CLIMBING)
-		var location = top_ray_cast.get_collision_point()
-		var shape : CapsuleShape2D = collision_shape_2d.shape
-		location.y -= shape.height * 0.5
-		global_position = location
 	
 	if Input.is_action_just_pressed("jump") and \
 			state in [STATES.IDLE, STATES.WALKING, STATES.COYOTE]:
@@ -40,6 +38,16 @@ func _physics_process(_delta : float) -> void:
 		
 	if Input.is_action_just_released("jump") and state == STATES.JUMPING:
 		velocity.y = 0.0
+		
+	if state == STATES.CLIMBING:
+		if climbing_timeout.is_stopped() or Input.is_action_just_pressed("drop_down"):
+			climbing_timeout.start()
+			change_state.emit(STATES.FALLING)
+		elif Input.is_action_just_pressed("jump"):
+			climb_up()
+			
+	if state in [STATES.IDLE, STATES.WALKING] and not climbing_timeout.is_stopped():
+		climbing_timeout.stop()
 		
 	coyote_check()
 	
@@ -59,7 +67,10 @@ func can_ledge_grab() -> bool:
 
 
 func coyote_check() -> void:
-	if not coyote_time.is_stopped() or get_real_velocity().y < 0.0 or is_on_floor():
+	if not coyote_time.is_stopped() or \
+	get_real_velocity().y < 0.0 or \
+	is_on_floor() or \
+	state == STATES.CLIMBING:
 		return
 	
 	if state in [STATES.WALKING, STATES.SPRINTING]:
@@ -68,3 +79,10 @@ func coyote_check() -> void:
 		return
 	
 	change_state.emit(STATES.FALLING)
+
+
+func climb_up() -> void:
+	var location = top_ray_cast.get_collision_point()
+	var shape : CapsuleShape2D = collision_shape_2d.shape
+	location.y -= shape.height * 0.5
+	global_position = location
