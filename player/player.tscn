@@ -1,10 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dfipd6t0uiicv"]
+[gd_scene load_steps=8 format=3 uid="uid://dfipd6t0uiicv"]
 
 [ext_resource type="Script" uid="uid://c72hkr6kj7ckv" path="res://player/player.gd" id="1_oul6g"]
 [ext_resource type="PackedScene" uid="uid://ckephimkda3cb" path="res://components/gravity.tscn" id="2_rkbax"]
 [ext_resource type="PackedScene" uid="uid://dlg10nup8rkuo" path="res://components/state_machine.tscn" id="3_g1dw6"]
 [ext_resource type="PackedScene" uid="uid://0e2015teptyf" path="res://components/movement.tscn" id="3_yw30f"]
-[ext_resource type="PackedScene" uid="uid://cy537276fk4lt" path="res://components/whip.tscn" id="5_qjkh3"]
+[ext_resource type="PackedScene" uid="uid://cy537276fk4lt" path="res://components/whip.tscn" id="5_g6k8r"]
 [ext_resource type="Script" uid="uid://b44ffe4rhpsj" path="res://player/climbing_timeout.gd" id="5_qjkh3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rkbax"]
@@ -38,7 +38,7 @@ shape = SubResource("CapsuleShape2D_rkbax")
 
 [node name="Gravity" parent="." instance=ExtResource("2_rkbax")]
 
-[node name="Whip" parent="." instance=ExtResource("5_qjkh3")]
+[node name="Whip" parent="." instance=ExtResource("5_g6k8r")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(0, -200)
