@@ -4,5 +4,3 @@
 
 [node name="Whip" type="Node2D"]
 script = ExtResource("1_7xfj8")
-whip_length = null
-max_distance = null
