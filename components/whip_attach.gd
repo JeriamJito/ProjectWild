@@ -10,7 +10,7 @@ var attach_index := -1:
 			return
 		var grapple_points = get_tree().get_nodes_in_group("WhipTarget")
 		var grapple_point : Node2D = grapple_points[attach_index]
-		position = grapple_point.global_position
+		global_position = grapple_point.global_position
 
 
 func _on_whip_set_grapple_point(new_index: int) -> void:
