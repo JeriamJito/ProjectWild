@@ -13,5 +13,6 @@ var _state := STATES.IDLE:
 		_state = new_state
 		parent.state = _state
 
+
 func _on_change_state(state: Globals.STATES):
 	_state = state

@@ -4,6 +4,7 @@ class_name Actor
 const STATES = Globals.STATES
 
 signal change_state
+signal attempt_change_state
 signal velocity_change
 
 @onready var collision_shape_2d: CollisionShape2D = %CollisionShape2D
@@ -37,7 +38,7 @@ func _physics_process(_delta : float) -> void:
 		change_state.emit(STATES.CLIMBING)
 	elif state in [STATES.JUMPING, STATES.FALLING, STATES.SWINGING] and \
 			Input.is_action_just_pressed("whip_use"):
-		change_state.emit(STATES.SWINGING)
+		attempt_change_state.emit(STATES.SWINGING)
 	
 	if Input.is_action_just_pressed("jump"):
 		if state in [STATES.IDLE, STATES.WALKING, STATES.COYOTE]:

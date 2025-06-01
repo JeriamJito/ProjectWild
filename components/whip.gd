@@ -13,10 +13,12 @@ signal set_grapple_point
 
 var grapple_point := GRAPPLE_RESET
 var current_grapple_point := -1.0
+var state_machine : StateMachine
 
 func _ready() -> void:
 	parent.change_state.connect(create_rope)
-
+	parent.attempt_change_state.connect(try_create_rope)
+	state_machine = parent.find_child("StateMachine")
 
 func _process(_delta: float) -> void:
 	var new_grapple_point = get_valid_grapple_point()
@@ -68,3 +70,9 @@ func create_rope(state: Globals.STATES) -> void:
 		parent.remote_transform_2d.remote_path = camera_path
 		existing_rope.queue_free()
 		current_grapple_point = -1
+
+
+func try_create_rope(state: Globals.STATES) -> void:
+	if not has_grapple_point():
+		return
+	parent.change_state.emit(state)
