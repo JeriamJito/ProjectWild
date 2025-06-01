@@ -11,7 +11,6 @@ const STATES = Globals.STATES
 
 signal set_grapple_point
 
-var _rope : Rope
 var grapple_point := GRAPPLE_RESET
 var current_grapple_point := -1
 
@@ -19,8 +18,10 @@ func _ready() -> void:
 	parent.change_state.connect(create_rope)
 
 func _process(_delta: float) -> void:
-	grapple_point = get_valid_grapple_point()
-	set_grapple_point.emit(grapple_point.x)
+	var new_grapple_point = get_valid_grapple_point()
+	if new_grapple_point.x != grapple_point.x:
+		grapple_point = new_grapple_point
+		set_grapple_point.emit(grapple_point.x)
 
 
 func get_valid_grapple_point() -> Vector2:
@@ -36,7 +37,7 @@ func get_valid_grapple_point() -> Vector2:
 		
 		var lateral_distance = global_position.x - test_point.global_position.x
 		if sign(lateral_distance) == sign(parent.last_direction):
-			return grapple_test
+			continue
 		
 		var player_distance = global_position.distance_to(test_point.global_position)
 		var mouse_distance = mouse_position.distance_to(test_point.global_position)
@@ -54,9 +55,9 @@ func create_rope(state: Globals.STATES) -> void:
 		var grapple_points : Array = get_tree().get_nodes_in_group("WhipTarget")
 		var test_point : Node2D = grapple_points[grapple_point.x]
 		current_grapple_point = grapple_point.x
-		_rope = WHIP_LINE.instantiate()
-		get_tree().root.add_child(_rope)
-		_rope.create_rope(test_point.global_position, parent.global_position)
+		var rope : Rope = WHIP_LINE.instantiate()
+		get_tree().root.add_child(rope)
+		rope.create_rope(test_point.global_position, parent.global_position)
 	else:
 		var existing_rope = get_tree().get_first_node_in_group("WhipLine")
 		if not existing_rope:
