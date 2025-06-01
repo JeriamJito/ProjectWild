@@ -17,6 +17,7 @@ var current_grapple_point := -1
 func _ready() -> void:
 	parent.change_state.connect(create_rope)
 
+
 func _process(_delta: float) -> void:
 	var new_grapple_point = get_valid_grapple_point()
 	if new_grapple_point.x != grapple_point.x:
@@ -64,3 +65,4 @@ func create_rope(state: Globals.STATES) -> void:
 			return
 		parent.reparent(get_tree().root)
 		existing_rope.queue_free()
+		current_grapple_point = -1
