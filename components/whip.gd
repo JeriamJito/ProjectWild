@@ -73,6 +73,6 @@ func create_rope(state: Globals.STATES) -> void:
 
 
 func try_create_rope(state: Globals.STATES) -> void:
-	if not has_grapple_point():
+	if state != STATES.SWINGING or not has_grapple_point():
 		return
 	parent.change_state.emit(state)
