@@ -14,13 +14,14 @@ signal velocity_change
 
 var state := STATES.IDLE
 var direction := 0.0
+var last_direction := 1
 
 func _physics_process(_delta : float) -> void:
 	global_rotation = 0.0
 	direction = Input.get_axis("move_left", "move_right")
 	
 	if direction != 0.0:
-		scale.x = scale.y * sign(direction)
+		last_direction = sign(direction)
 	
 	if direction == 0.0 and is_on_floor():
 		change_state.emit(STATES.IDLE)
@@ -63,7 +64,7 @@ func _physics_process(_delta : float) -> void:
 func can_ledge_grab() -> bool:
 	if not front_ray_cast.is_colliding():
 		return false
-	var location = front_ray_cast.get_collision_point().x + 5.0 * sign(scale.y)
+	var location = front_ray_cast.get_collision_point().x + 5.0 * last_direction
 	top_ray_cast.global_position.x = location
 	if not top_ray_cast.is_colliding():
 		return false

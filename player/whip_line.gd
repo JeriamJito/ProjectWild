@@ -15,7 +15,7 @@ func create_rope(start: Vector2, end: Vector2) -> void:
 	pinjoint.node_b = player_point.get_path()
 	add_child(pinjoint)
 	player.reparent(player_point)
-	player_point.apply_impulse(Vector2(initial_force * player.scale.y, 0))
+	player_point.apply_impulse(Vector2(initial_force * player.last_direction, 0))
 	
 	if get_tree().get_node_count_in_group("WhipLine") > 1:
 		var existing_rope = get_tree().get_first_node_in_group("WhipLine")
