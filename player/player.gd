@@ -28,12 +28,13 @@ func _physics_process(_delta : float) -> void:
 	elif is_on_floor():
 		change_state.emit(STATES.WALKING)
 		
-	if state in [STATES.JUMPING, STATES.FALLING]:
-		if can_ledge_grab() and climbing_timeout.is_stopped():
-			climbing_timeout.start()
-			change_state.emit(STATES.CLIMBING)
-		elif Input.is_action_just_pressed("whip_use"):
-			change_state.emit(STATES.SWINGING)
+	if state in [STATES.JUMPING, STATES.FALLING] and \
+			can_ledge_grab() and climbing_timeout.is_stopped():
+		climbing_timeout.start()
+		change_state.emit(STATES.CLIMBING)
+	elif state in [STATES.JUMPING, STATES.FALLING, STATES.SWINGING] and \
+			Input.is_action_just_pressed("whip_use"):
+		change_state.emit(STATES.SWINGING)
 	
 	if Input.is_action_just_pressed("jump") and \
 			state in [STATES.IDLE, STATES.WALKING, STATES.COYOTE]:

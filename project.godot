@@ -34,6 +34,7 @@ project/assembly_name="Major Jam 7- Wild"
 
 WhipTarget="A node that the player's whip can target"
 Player="You know who you are"
+WhipLine="Whip physics components"
 
 [input]
 

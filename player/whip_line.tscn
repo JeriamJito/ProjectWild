@@ -4,7 +4,7 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_44o1s"]
 
-[node name="WhipLine" type="Node2D"]
+[node name="WhipLine" type="Node2D" groups=["WhipLine"]]
 script = ExtResource("1_44o1s")
 
 [node name="AttachmentPoint" type="StaticBody2D" parent="."]

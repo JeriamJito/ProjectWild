@@ -21,14 +21,14 @@ polygon = PackedVector2Array(704, 346, 760, 454, 840, 345)
 position = Vector2(760, 441)
 
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Stage/StaticBody2D"]
-position = Vector2(396, -34)
+position = Vector2(557, -25)
 polygon = PackedVector2Array(704, 346, 760, 454, 840, 345)
 
 [node name="GrapplePoint" parent="Stage/StaticBody2D/CollisionPolygon2D3" instance=ExtResource("1_rnkuw")]
 position = Vector2(760, 441)
 
 [node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Stage/StaticBody2D"]
-position = Vector2(811, -31)
+position = Vector2(1114, -28)
 polygon = PackedVector2Array(704, 346, 760, 454, 840, 345)
 
 [node name="GrapplePoint" parent="Stage/StaticBody2D/CollisionPolygon2D4" instance=ExtResource("1_rnkuw")]

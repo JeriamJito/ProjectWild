@@ -13,7 +13,7 @@
 radius = 28.0
 height = 108.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_oul6g")
 
 [node name="ColorRect" type="ColorRect" parent="."]
