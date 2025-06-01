@@ -6,11 +6,12 @@ class_name Whip
 @onready var parent : Actor = get_parent()
 
 const WHIP_LINE = preload("res://player/whip_line.tscn")
-const GRAPPLE_RESET := Vector2(-1, 999999)
+const GRAPPLE_RESET := Vector2(-1, 999999) # x = index, y = distance
 signal set_grapple_point
 
 var _in_use := false
-var grapple_point := GRAPPLE_RESET # x = index, y = distance
+var _rope : Rope
+var grapple_point := GRAPPLE_RESET
 
 func _process(_delta: float) -> void:
 	grapple_point = get_valid_grapple_point()
@@ -20,13 +21,15 @@ func _process(_delta: float) -> void:
 func _physics_process(_delta: float) -> void:
 	if _in_use or not has_grapple_point():
 		return
+	
 	if Input.is_action_just_pressed("whip_use"):
 		var grapple_points : Array = get_tree().get_nodes_in_group("WhipTarget")
 		var test_point : Node2D = grapple_points[grapple_point.x]
-		var rope := WHIP_LINE.instantiate()
-		rope.set_point_position(0, test_point.global_position)
-		rope.set_point_position(1, parent.global_position)
-		get_tree().root.add_child(rope)
+		_rope = WHIP_LINE.instantiate()
+		get_tree().root.add_child(_rope)
+		_rope.create_rope(test_point.global_position, parent.global_position)
+		_in_use = true
+
 
 func get_valid_grapple_point() -> Vector2:
 	var grapple_points : Array = get_tree().get_nodes_in_group("WhipTarget")
