@@ -50,11 +50,16 @@ func has_grapple_point():
 
 
 func create_rope(state: Globals.STATES) -> void:
-	if state != STATES.SWINGING:
-		return
-	var grapple_points : Array = get_tree().get_nodes_in_group("WhipTarget")
-	var test_point : Node2D = grapple_points[grapple_point.x]
-	current_grapple_point = grapple_point.x
-	_rope = WHIP_LINE.instantiate()
-	get_tree().root.add_child(_rope)
-	_rope.create_rope(test_point.global_position, parent.global_position)
+	if state == STATES.SWINGING:
+		var grapple_points : Array = get_tree().get_nodes_in_group("WhipTarget")
+		var test_point : Node2D = grapple_points[grapple_point.x]
+		current_grapple_point = grapple_point.x
+		_rope = WHIP_LINE.instantiate()
+		get_tree().root.add_child(_rope)
+		_rope.create_rope(test_point.global_position, parent.global_position)
+	else:
+		var existing_rope = get_tree().get_first_node_in_group("WhipLine")
+		if not existing_rope:
+			return
+		parent.reparent(get_tree().root)
+		existing_rope.queue_free()
