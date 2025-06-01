@@ -8,7 +8,7 @@ var attach_index := -1:
 		color_rect.visible = attach_index > -1
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if attach_index == -1:
 		return
 	var grapple_points = get_tree().get_nodes_in_group("WhipTarget")

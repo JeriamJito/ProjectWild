@@ -41,7 +41,7 @@ func _physics_process(_delta : float) -> void:
 		if state in [STATES.IDLE, STATES.WALKING, STATES.COYOTE]:
 			change_state.emit(STATES.JUMPING)
 		elif state in [STATES.SWINGING]:
-			change_state.emit(STATES.FALLING)
+			change_state.emit(STATES.JUMPING)
 		
 	if Input.is_action_just_released("jump") and state == STATES.JUMPING:
 		velocity.y = 0.0

@@ -12,7 +12,7 @@ const STATES = Globals.STATES
 signal set_grapple_point
 
 var grapple_point := GRAPPLE_RESET
-var current_grapple_point := -1
+var current_grapple_point := -1.0
 
 func _ready() -> void:
 	parent.change_state.connect(create_rope)
@@ -60,7 +60,7 @@ func create_rope(state: Globals.STATES) -> void:
 		get_tree().root.add_child(rope)
 		rope.create_rope(test_point.global_position, parent.global_position)
 	else:
-		var existing_rope = get_tree().get_first_node_in_group("WhipLine")
+		var existing_rope : Rope = get_tree().get_first_node_in_group("WhipLine")
 		if not existing_rope:
 			return
 		parent.reparent(get_tree().root)

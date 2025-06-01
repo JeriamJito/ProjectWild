@@ -6,6 +6,7 @@
 
 [node name="WhipLine" type="Node2D" groups=["WhipLine"]]
 script = ExtResource("1_44o1s")
+initial_force = 1000
 
 [node name="AttachmentPoint" type="StaticBody2D" parent="."]
 unique_name_in_owner = true
