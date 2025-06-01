@@ -47,15 +47,6 @@ shape = SubResource("CapsuleShape2D_rkbax")
 
 [node name="WhipAttach" parent="." instance=ExtResource("8_hg6s5")]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2(0, -200)
-zoom = Vector2(0.5, 0.5)
-position_smoothing_speed = 10.0
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
-drag_top_margin = 0.8
-drag_bottom_margin = 0.0
-
 [node name="FrontRayCast" type="RayCast2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(0, -30)
@@ -76,5 +67,8 @@ one_shot = true
 unique_name_in_owner = true
 one_shot = true
 script = ExtResource("5_qjkh3")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
+unique_name_in_owner = true
 
 [connection signal="set_grapple_point" from="Whip" to="WhipAttach" method="_on_whip_set_grapple_point"]

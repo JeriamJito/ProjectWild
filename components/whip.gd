@@ -57,12 +57,14 @@ func create_rope(state: Globals.STATES) -> void:
 		var test_point : Node2D = grapple_points[grapple_point.x]
 		current_grapple_point = grapple_point.x
 		var rope : Rope = WHIP_LINE.instantiate()
-		get_tree().root.add_child(rope)
+		get_node("/root/Level").add_child(rope)
 		rope.create_rope(test_point.global_position, parent.global_position)
 	else:
 		var existing_rope : Rope = get_tree().get_first_node_in_group("WhipLine")
 		if not existing_rope:
 			return
-		parent.reparent(get_tree().root)
+		parent.reparent(get_node("/root/Level"))
+		var camera_path = get_tree().get_first_node_in_group("Camera").get_path()
+		parent.remote_transform_2d.remote_path = camera_path
 		existing_rope.queue_free()
 		current_grapple_point = -1

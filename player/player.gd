@@ -11,10 +11,12 @@ signal velocity_change
 @onready var top_ray_cast: RayCast2D = %TopRayCast
 @onready var coyote_time: Timer = %CoyoteTime
 @onready var climbing_timeout: ClimbingTimer = %ClimbingTimeout
+@onready var remote_transform_2d: RemoteTransform2D = %RemoteTransform2D
 
 var state := STATES.IDLE
 var direction := 0.0
 var last_direction := 1
+
 
 func _physics_process(_delta : float) -> void:
 	global_rotation = 0.0

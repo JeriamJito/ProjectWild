@@ -27,6 +27,8 @@ func create_pinjoint() -> void:
 func attach_player() -> void:
 	var player : Actor = get_tree().get_first_node_in_group("Player")
 	player.reparent(player_point)
+	var camera_path = get_tree().get_first_node_in_group("Camera").get_path()
+	player.remote_transform_2d.remote_path = camera_path
 	player.velocity = Vector2.ZERO
 	var whip_vector := attachment_point.position - player_point.position
 	var force_vector := Vector2(-whip_vector.y, whip_vector.x).normalized()
