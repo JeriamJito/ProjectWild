@@ -16,6 +16,7 @@ var state := STATES.IDLE
 var direction := 0.0
 
 func _physics_process(_delta : float) -> void:
+	global_rotation = 0.0
 	direction = Input.get_axis("move_left", "move_right")
 	
 	if direction != 0.0:
@@ -27,10 +28,12 @@ func _physics_process(_delta : float) -> void:
 	elif is_on_floor():
 		change_state.emit(STATES.WALKING)
 		
-	if state in [STATES.JUMPING, STATES.FALLING] and \
-			can_ledge_grab() and climbing_timeout.is_stopped():
-		climbing_timeout.start()
-		change_state.emit(STATES.CLIMBING)
+	if state in [STATES.JUMPING, STATES.FALLING]:
+		if can_ledge_grab() and climbing_timeout.is_stopped():
+			climbing_timeout.start()
+			change_state.emit(STATES.CLIMBING)
+		elif Input.is_action_just_pressed("whip_use"):
+			change_state.emit(STATES.SWINGING)
 	
 	if Input.is_action_just_pressed("jump") and \
 			state in [STATES.IDLE, STATES.WALKING, STATES.COYOTE]:
@@ -70,7 +73,7 @@ func coyote_check() -> void:
 	if not coyote_time.is_stopped() or \
 	get_real_velocity().y < 0.0 or \
 	is_on_floor() or \
-	state == STATES.CLIMBING:
+	state in [STATES.CLIMBING, STATES.SWINGING]:
 		return
 	
 	if state in [STATES.WALKING, STATES.SPRINTING]:

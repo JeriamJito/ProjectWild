@@ -33,6 +33,7 @@ project/assembly_name="Major Jam 7- Wild"
 [global_group]
 
 WhipTarget="A node that the player's whip can target"
+Player="You know who you are"
 
 [input]
 
