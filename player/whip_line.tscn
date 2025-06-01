@@ -6,7 +6,15 @@
 
 [node name="WhipLine" type="Node2D" groups=["WhipLine"]]
 script = ExtResource("1_44o1s")
-initial_force = 1000
+initial_force = 200
+swing_force = 200
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+unique_name_in_owner = true
+node_a = NodePath("../AttachmentPoint")
+node_b = NodePath("../PlayerPoint")
+angular_limit_lower = 1.39626
+angular_limit_upper = -1.39626
 
 [node name="AttachmentPoint" type="StaticBody2D" parent="."]
 unique_name_in_owner = true

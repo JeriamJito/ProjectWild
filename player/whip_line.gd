@@ -1,10 +1,29 @@
 extends Node2D
 class_name Rope
 
+const STATES = Globals.STATES
+
 @export var initial_force := 800
+@export var swing_force := 800
 
 @onready var attachment_point: StaticBody2D = %AttachmentPoint
 @onready var player_point: RigidBody2D = %PlayerPoint
+@onready var pin_joint_2d: PinJoint2D = %PinJoint2D
+@onready var player : Actor = get_tree().get_first_node_in_group("Player")
+
+func _physics_process(_delta: float) -> void:
+	if player.state != STATES.SWINGING:
+		return
+	
+	var direction := Input.get_axis("move_left", "move_right")
+	if direction == 0.0:
+		return
+	
+	var movement_vector := player_point.linear_velocity.normalized()
+	movement_vector.x = direction
+	var lateral_movement : int = sign(player_point.global_position.x - attachment_point.global_position.x)
+	movement_vector.y = -direction * lateral_movement
+	player_point.apply_force(movement_vector * swing_force)
 
 func create_rope(start: Vector2, end: Vector2, length: float) -> void:
 	global_position = start
@@ -20,23 +39,18 @@ func create_rope(start: Vector2, end: Vector2, length: float) -> void:
 
 
 func create_pinjoint() -> void:
-	var pinjoint := PinJoint2D.new()
-	pinjoint.node_a = attachment_point.get_path()
-	pinjoint.node_b = player_point.get_path()
-	add_child(pinjoint)
+	pin_joint_2d.node_b = player_point.get_path()
 
 
 func attach_player() -> void:
-	var player : Actor = get_tree().get_first_node_in_group("Player")
 	player.reparent(player_point)
 	var camera_path = get_tree().get_first_node_in_group("Camera").get_path()
 	player.remote_transform_2d.remote_path = camera_path
 	player.velocity = Vector2.ZERO
 	var whip_vector := attachment_point.position - player_point.position
-	var force_vector := Vector2(-whip_vector.y, whip_vector.x).normalized()
-	if player.last_direction == -1:
-		force_vector *= Vector2(-1, -1)
-	player_point.apply_impulse(force_vector * initial_force)
+	whip_vector = whip_vector.normalized()
+	var force_vector := Vector2(-whip_vector.y, whip_vector.x)
+	player_point.apply_impulse(force_vector * player.last_direction * initial_force * -whip_vector.y)
 
 
 func remove_last_whip() -> void:

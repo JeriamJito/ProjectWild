@@ -44,8 +44,6 @@ shape = SubResource("CapsuleShape2D_rkbax")
 [node name="Cursor" parent="." instance=ExtResource("7_rgyib")]
 
 [node name="Whip" parent="." instance=ExtResource("5_g6k8r")]
-whip_length = null
-max_distance = null
 
 [node name="WhipAttach" parent="." instance=ExtResource("8_hg6s5")]
 
