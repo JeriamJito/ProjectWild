@@ -42,6 +42,10 @@ position = Vector2(760, 441)
 unique_name_in_owner = true
 position = Vector2(2130, 902)
 
+[node name="Whip" parent="Player" index="6"]
+whip_length = null
+max_distance = null
+
 [node name="RemoteTransform2D" parent="Player" index="12"]
 remote_path = NodePath("../../Camera2D")
 

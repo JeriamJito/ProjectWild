@@ -6,11 +6,13 @@ class_name Rope
 @onready var attachment_point: StaticBody2D = %AttachmentPoint
 @onready var player_point: RigidBody2D = %PlayerPoint
 
-func create_rope(start: Vector2, end: Vector2) -> void:
+func create_rope(start: Vector2, end: Vector2, length: float) -> void:
 	global_position = start
-	player_point.global_position = end
+	player_point.position = Vector2(0.0, length)
 	
 	create_pinjoint()
+	
+	player_point.global_position = end
 	
 	attach_player()
 	
