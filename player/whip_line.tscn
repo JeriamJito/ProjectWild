@@ -6,7 +6,7 @@
 
 [node name="WhipLine" type="Node2D" groups=["WhipLine"]]
 script = ExtResource("1_44o1s")
-initial_force = 200
+initial_force = 1200
 swing_force = 200
 
 [node name="PinJoint2D" type="PinJoint2D" parent="."]

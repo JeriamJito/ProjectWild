@@ -19,11 +19,10 @@ func _physics_process(_delta: float) -> void:
 	if direction == 0.0:
 		return
 	
-	var movement_vector := player_point.linear_velocity.normalized()
-	movement_vector.x = direction
 	var lateral_movement : int = sign(player_point.global_position.x - attachment_point.global_position.x)
-	movement_vector.y = -direction * lateral_movement
+	var movement_vector = Vector2(direction, -direction * lateral_movement)
 	player_point.apply_force(movement_vector * swing_force)
+
 
 func create_rope(start: Vector2, end: Vector2, length: float) -> void:
 	global_position = start
