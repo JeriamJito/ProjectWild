@@ -9,7 +9,7 @@ const STATES = Globals.STATES
 @export var acceleration := 2000.0
 
 func _physics_process(_delta : float) -> void:
-	if parent.state == STATES.CLIMBING:
+	if parent.state in [STATES.CLIMBING, STATES.SWINGING]:
 		return
 	move_lateral()
 

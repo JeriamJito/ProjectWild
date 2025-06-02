@@ -1,16 +1,20 @@
-[gd_scene load_steps=7 format=3 uid="uid://dfipd6t0uiicv"]
+[gd_scene load_steps=11 format=3 uid="uid://dfipd6t0uiicv"]
 
 [ext_resource type="Script" uid="uid://c72hkr6kj7ckv" path="res://player/player.gd" id="1_oul6g"]
 [ext_resource type="PackedScene" uid="uid://ckephimkda3cb" path="res://components/gravity.tscn" id="2_rkbax"]
 [ext_resource type="PackedScene" uid="uid://dlg10nup8rkuo" path="res://components/state_machine.tscn" id="3_g1dw6"]
 [ext_resource type="PackedScene" uid="uid://0e2015teptyf" path="res://components/movement.tscn" id="3_yw30f"]
+[ext_resource type="PackedScene" uid="uid://cy537276fk4lt" path="res://components/whip.tscn" id="5_g6k8r"]
 [ext_resource type="Script" uid="uid://b44ffe4rhpsj" path="res://player/climbing_timeout.gd" id="5_qjkh3"]
+[ext_resource type="PackedScene" uid="uid://dqeh25s827j77" path="res://components/cursor.tscn" id="7_rgyib"]
+[ext_resource type="Script" uid="uid://dp4yiid8benh1" path="res://player/front_ray_cast.gd" id="8_8t03j"]
+[ext_resource type="PackedScene" uid="uid://b3grspwqj5bit" path="res://components/whip_attach.tscn" id="8_hg6s5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rkbax"]
 radius = 28.0
 height = 108.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_oul6g")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -37,19 +41,17 @@ shape = SubResource("CapsuleShape2D_rkbax")
 
 [node name="Gravity" parent="." instance=ExtResource("2_rkbax")]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2(0, -200)
-zoom = Vector2(0.8, 0.8)
-position_smoothing_speed = 10.0
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
-drag_top_margin = 0.8
-drag_bottom_margin = 0.0
+[node name="Cursor" parent="." instance=ExtResource("7_rgyib")]
+
+[node name="Whip" parent="." instance=ExtResource("5_g6k8r")]
+
+[node name="WhipAttach" parent="." instance=ExtResource("8_hg6s5")]
 
 [node name="FrontRayCast" type="RayCast2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(0, -30)
 target_position = Vector2(50, 0)
+script = ExtResource("8_8t03j")
 
 [node name="TopRayCast" type="RayCast2D" parent="."]
 unique_name_in_owner = true
@@ -65,3 +67,8 @@ one_shot = true
 unique_name_in_owner = true
 one_shot = true
 script = ExtResource("5_qjkh3")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
+unique_name_in_owner = true
+
+[connection signal="set_grapple_point" from="Whip" to="WhipAttach" method="_on_whip_set_grapple_point"]
