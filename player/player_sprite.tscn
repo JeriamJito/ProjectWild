@@ -1,0 +1,79 @@
+[gd_scene load_steps=12 format=3 uid="uid://baup38xlcs2fe"]
+
+[ext_resource type="Texture2D" uid="uid://djg1bdqheb5a0" path="res://player/Running sprite - Protagonist.png" id="1_su0ct"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6w4i"]
+atlas = ExtResource("1_su0ct")
+region = Rect2(0, 0, 384, 540)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7y5x"]
+atlas = ExtResource("1_su0ct")
+region = Rect2(384, 0, 384, 540)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nv407"]
+atlas = ExtResource("1_su0ct")
+region = Rect2(768, 0, 384, 540)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ebbgc"]
+atlas = ExtResource("1_su0ct")
+region = Rect2(1152, 0, 384, 540)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1t2ku"]
+atlas = ExtResource("1_su0ct")
+region = Rect2(1536, 0, 384, 540)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2prt"]
+atlas = ExtResource("1_su0ct")
+region = Rect2(384, 540, 384, 540)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lnvih"]
+atlas = ExtResource("1_su0ct")
+region = Rect2(768, 540, 384, 540)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uaox5"]
+atlas = ExtResource("1_su0ct")
+region = Rect2(1152, 540, 384, 540)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uq0bo"]
+atlas = ExtResource("1_su0ct")
+region = Rect2(1536, 540, 384, 540)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2uw36"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o6w4i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7y5x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nv407")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ebbgc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1t2ku")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b2prt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lnvih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uaox5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uq0bo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="PlayerSprite" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_2uw36")
+frame = 5
+frame_progress = 0.760905
