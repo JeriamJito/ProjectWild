@@ -45,11 +45,15 @@ func attach_player() -> void:
 	player.reparent(player_point)
 	var camera_path = get_tree().get_first_node_in_group("Camera").get_path()
 	player.remote_transform_2d.remote_path = camera_path
+	var cached_velocity = player.velocity.y
 	player.velocity = Vector2.ZERO
-	var whip_vector := attachment_point.position - player_point.position
+	var whip_vector := player_point.position - attachment_point.position
 	whip_vector = whip_vector.normalized()
 	var force_vector := Vector2(-whip_vector.y, whip_vector.x)
-	player_point.apply_impulse(force_vector * player.last_direction * initial_force * -whip_vector.y)
+	var applied_force : float = max(initial_force, cached_velocity)
+	print(cached_velocity, " ", applied_force)
+	player_point.apply_impulse(
+		force_vector * -player.last_direction * applied_force)
 
 
 func remove_last_whip() -> void:
