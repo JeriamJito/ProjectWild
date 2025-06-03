@@ -18,7 +18,7 @@ tile_set = ExtResource("1_rnkuw")
 visible = false
 
 [node name="Camera2D" type="Camera2D" parent="." groups=["Camera"]]
-position = Vector2(1435.52, 938.061)
+position = Vector2(980.075, 937.933)
 offset = Vector2(0, -200)
 zoom = Vector2(0.8, 0.8)
 position_smoothing_speed = 10.0
@@ -29,7 +29,7 @@ drag_bottom_margin = 0.0
 editor_draw_drag_margin = true
 
 [node name="Player" parent="." instance=ExtResource("1_6eo5e")]
-position = Vector2(1435.52, 938.061)
+position = Vector2(980.075, 937.933)
 velocity = Vector2(0, 125)
 
 [node name="RemoteTransform2D" parent="Player" index="12"]
