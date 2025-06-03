@@ -1,4 +1,3 @@
-@tool
 extends Node2D
 class_name Gravity
 
@@ -27,8 +26,7 @@ var _jump_gravity : float
 var _fall_gravity : float
 
 func _ready() -> void:
-	if not Engine.is_editor_hint():
-		parent.change_state.connect(_on_change_state)
+	parent.change_state.connect(_on_change_state)
 	calculate_jump_values()
 
 
@@ -39,9 +37,6 @@ func calculate_jump_values() -> void:
 
 
 func _physics_process(_delta : float) -> void:
-	if Engine.is_editor_hint():
-		return
-	
 	if parent.state in [STATES.CLIMBING, STATES.SWINGING]:
 		parent.velocity.y = 0.0
 		return

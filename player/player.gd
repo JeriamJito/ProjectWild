@@ -7,27 +7,17 @@ signal change_state
 signal attempt_change_state
 signal velocity_change
 
+@onready var collision_shape_2d: CollisionShape2D = %CollisionShape2D
+@onready var front_ray_cast: RayCast2D = %FrontRayCast
+@onready var top_ray_cast: RayCast2D = %TopRayCast
+@onready var coyote_time: Timer = %CoyoteTime
+@onready var climbing_timeout: ClimbingTimer = %ClimbingTimeout
+@onready var remote_transform_2d: RemoteTransform2D = %RemoteTransform2D
+
 var state := STATES.IDLE
 var direction := 0.0
 var last_direction := 1
 
-var collision_shape_2d: CollisionShape2D
-var front_ray_cast: RayCast2D
-var top_ray_cast: RayCast2D
-var coyote_time: Timer
-var climbing_timeout: ClimbingTimer
-var remote_transform_2d: RemoteTransform2D
-
-func _ready() -> void:
-	if Engine.is_editor_hint():
-		return
-	
-	collision_shape_2d = %CollisionShape2D
-	front_ray_cast = %FrontRayCast
-	top_ray_cast = %TopRayCast
-	coyote_time = %CoyoteTime
-	climbing_timeout = %ClimbingTimeout
-	remote_transform_2d = %RemoteTransform2D
 
 func _physics_process(_delta : float) -> void:
 	global_rotation = 0.0

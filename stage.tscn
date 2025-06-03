@@ -1,13 +1,8 @@
-[gd_scene load_steps=6 format=4 uid="uid://2153uolid3xb"]
+[gd_scene load_steps=4 format=4 uid="uid://2153uolid3xb"]
 
 [ext_resource type="PackedScene" uid="uid://dfipd6t0uiicv" path="res://player/player.tscn" id="1_6eo5e"]
 [ext_resource type="TileSet" uid="uid://cvaj61kv2atjw" path="res://tilemaps/test_tiles.tres" id="1_rnkuw"]
 [ext_resource type="PackedScene" uid="uid://c05kl5ke1wrl3" path="res://debug/debug.tscn" id="2_aees8"]
-[ext_resource type="PackedScene" uid="uid://cgvwrtpkglvro" path="res://tools/platforming_tool.tscn" id="4_16g40"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rkbax"]
-radius = 28.0
-height = 108.0
 
 [node name="Level" type="Node2D"]
 
@@ -40,18 +35,8 @@ drag_top_margin = 0.8
 drag_bottom_margin = 0.0
 editor_draw_drag_margin = true
 
-[node name="PlatformingTool" parent="." node_paths=PackedStringArray("character_node", "movement_node", "collision_node") instance=ExtResource("4_16g40")]
-position = Vector2(992, 937.999)
-character_node = NodePath("../Player")
-movement_node = NodePath("../Player/Movement")
-collision_node = NodePath("../Player/CollisionShape2D")
-
-[node name="CollisionShape2D" parent="PlatformingTool" index="1"]
-shape = SubResource("CapsuleShape2D_rkbax")
-
 [connection signal="change_state" from="Player" to="CanvasLayer/Debug/VBoxContainer/PlayerState" method="_on_player_change_state"]
 [connection signal="velocity_change" from="Player" to="CanvasLayer/Debug/VBoxContainer/PlayerVelocity" method="_on_player_velocity_change"]
 
 [editable path="CanvasLayer/Debug"]
 [editable path="Player"]
-[editable path="PlatformingTool"]
