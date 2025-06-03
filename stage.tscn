@@ -16,15 +16,8 @@ tile_set = ExtResource("1_rnkuw")
 
 [node name="Debug" parent="CanvasLayer" instance=ExtResource("2_aees8")]
 
-[node name="Player" parent="." instance=ExtResource("1_6eo5e")]
-unique_name_in_owner = true
-position = Vector2(2130, 902)
-
-[node name="RemoteTransform2D" parent="Player" index="13"]
-remote_path = NodePath("../../Camera2D")
-
 [node name="Camera2D" type="Camera2D" parent="." groups=["Camera"]]
-position = Vector2(980.075, 937.933)
+position = Vector2(980.075, 937.998)
 offset = Vector2(0, -200)
 zoom = Vector2(0.8, 0.8)
 position_smoothing_speed = 10.0
@@ -35,12 +28,11 @@ drag_bottom_margin = 0.0
 editor_draw_drag_margin = true
 
 [node name="Player" parent="." instance=ExtResource("1_6eo5e")]
-position = Vector2(980.075, 937.933)
+position = Vector2(980.075, 937.998)
 velocity = Vector2(0, 125)
 
-[node name="RemoteTransform2D" parent="Player" index="12"]
+[node name="RemoteTransform2D" parent="Player" index="14"]
 remote_path = NodePath("../../Camera2D")
 
 [editable path="CanvasLayer/Debug"]
 [editable path="Player"]
-[editable path="Player/PlatformTest"]
