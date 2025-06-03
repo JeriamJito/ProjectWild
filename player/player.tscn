@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dfipd6t0uiicv"]
+[gd_scene load_steps=12 format=3 uid="uid://dfipd6t0uiicv"]
 
 [ext_resource type="Script" uid="uid://c72hkr6kj7ckv" path="res://player/player.gd" id="1_oul6g"]
 [ext_resource type="PackedScene" uid="uid://ckephimkda3cb" path="res://components/gravity.tscn" id="2_rkbax"]
@@ -9,12 +9,15 @@
 [ext_resource type="PackedScene" uid="uid://dqeh25s827j77" path="res://components/cursor.tscn" id="7_rgyib"]
 [ext_resource type="Script" uid="uid://dp4yiid8benh1" path="res://player/front_ray_cast.gd" id="8_8t03j"]
 [ext_resource type="PackedScene" uid="uid://b3grspwqj5bit" path="res://components/whip_attach.tscn" id="8_hg6s5"]
+[ext_resource type="PackedScene" uid="uid://c12gwndp1uahl" path="res://tools/platform_test.tscn" id="10_2ieo8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rkbax"]
 radius = 28.0
 height = 108.0
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
+position = Vector2(0, 8.88764e+06)
+velocity = Vector2(0, 375625)
 script = ExtResource("1_oul6g")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -70,5 +73,7 @@ script = ExtResource("5_qjkh3")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
 unique_name_in_owner = true
+
+[node name="PlatformTest" parent="." instance=ExtResource("10_2ieo8")]
 
 [connection signal="set_grapple_point" from="Whip" to="WhipAttach" method="_on_whip_set_grapple_point"]

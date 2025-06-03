@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://c12gwndp1uahl"]
+
+[ext_resource type="Script" uid="uid://7352eioh12yc" path="res://tools/platform_test.gd" id="1_pmylg"]
+
+[node name="PlatformTest" type="Node2D"]
+script = ExtResource("1_pmylg")
+
+[node name="PositionTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.05
+one_shot = true
+
+[connection signal="timeout" from="PositionTimer" to="." method="_on_position_timer_timeout"]
