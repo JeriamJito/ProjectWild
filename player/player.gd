@@ -78,7 +78,7 @@ func can_ledge_grab() -> bool:
 		return false
 	var location = front_ray_cast.get_collision_point().x + 5.0 * last_direction
 	top_ray_cast.global_position.x = location
-	if not top_ray_cast.is_colliding():
+	if not top_ray_cast.is_colliding() or top_ray_cast.get_collision_normal() == Vector2.ZERO:
 		return false
 	return true
 
