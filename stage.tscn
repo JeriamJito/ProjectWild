@@ -21,7 +21,7 @@ visible = false
 unique_name_in_owner = true
 position = Vector2(422, 860)
 
-[node name="RemoteTransform2D" parent="Player" index="12"]
+[node name="RemoteTransform2D" parent="Player" index="13"]
 remote_path = NodePath("../../Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="." groups=["Camera"]]
