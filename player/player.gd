@@ -13,6 +13,7 @@ signal velocity_change
 @onready var top_ray_cast: RayCast2D = %TopRayCast
 @onready var coyote_time: Timer = %CoyoteTime
 @onready var climbing_timeout: ClimbingTimer = %ClimbingTimeout
+@onready var jump_timer: Timer = %JumpTimer
 @onready var remote_transform_2d: RemoteTransform2D = %RemoteTransform2D
 
 var state := STATES.FALLING
@@ -49,10 +50,12 @@ func _physics_process(_delta : float) -> void:
 	if Input.is_action_just_pressed("jump"):
 		if state in [STATES.IDLE, STATES.WALKING, STATES.COYOTE]:
 			change_state.emit(STATES.JUMPING)
+			jump_timer.start()
 		elif state in [STATES.SWINGING]:
 			change_state.emit(STATES.JUMPING)
 		
-	if Input.is_action_just_released("jump") and state == STATES.JUMPING:
+	if not Input.is_action_pressed("jump") and \
+			state == STATES.JUMPING and jump_timer.is_stopped():
 		velocity.y = 0.0
 		
 	if state == STATES.CLIMBING:
