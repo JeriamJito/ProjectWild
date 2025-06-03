@@ -16,8 +16,8 @@ radius = 28.0
 height = 108.0
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
-position = Vector2(0, 8.88764e+06)
-velocity = Vector2(0, 375625)
+position = Vector2(0, 1.83838e+07)
+velocity = Vector2(0, 532500)
 script = ExtResource("1_oul6g")
 
 [node name="ColorRect" type="ColorRect" parent="."]
