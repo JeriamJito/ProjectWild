@@ -4,6 +4,8 @@ class_name Actor
 
 const STATES = Globals.STATES
 
+@export_enum("Paused:1", "Unpaused:0") var physics : int = 1
+
 signal change_state
 signal attempt_change_state
 signal velocity_change
@@ -22,7 +24,7 @@ var last_direction := 1
 
 
 func _physics_process(_delta : float) -> void:
-	if Engine.is_editor_hint():
+	if Engine.is_editor_hint() and physics == 1:
 		return
 	
 	move_and_slide()

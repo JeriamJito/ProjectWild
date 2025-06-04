@@ -197,7 +197,7 @@ radius = 28.0
 height = 108.0
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
-velocity = Vector2(0, 6.03876e+06)
+velocity = Vector2(0, 6.18976e+06)
 script = ExtResource("1_oul6g")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
