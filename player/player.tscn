@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://dfipd6t0uiicv"]
+[gd_scene load_steps=37 format=3 uid="uid://dfipd6t0uiicv"]
 
 [ext_resource type="Script" uid="uid://c72hkr6kj7ckv" path="res://player/player.gd" id="1_oul6g"]
 [ext_resource type="Texture2D" uid="uid://djg1bdqheb5a0" path="res://player/Running sprite - Protagonist.png" id="2_8t03j"]
@@ -18,10 +18,6 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_wodsf"]
 atlas = ExtResource("2_kb6p2")
 region = Rect2(0, 0, 384, 540)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_32hag"]
-atlas = ExtResource("2_kb6p2")
-region = Rect2(1536, 540, 384, 540)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tqiix"]
 atlas = ExtResource("2_yllr7")
@@ -58,10 +54,6 @@ region = Rect2(768, 518, 384, 518)
 [sub_resource type="AtlasTexture" id="AtlasTexture_knn7v"]
 atlas = ExtResource("2_yllr7")
 region = Rect2(384, 518, 384, 518)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7pqkx"]
-atlas = ExtResource("2_kb6p2")
-region = Rect2(768, 0, 384, 540)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uw77l"]
 atlas = ExtResource("2_kb6p2")
@@ -108,12 +100,9 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wodsf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_32hag")
 }],
 "loop": false,
-"name": &"falling",
+"name": &"FALLING",
 "speed": 15.0
 }, {
 "frames": [{
@@ -145,18 +134,15 @@ animations = [{
 "texture": SubResource("AtlasTexture_knn7v")
 }],
 "loop": true,
-"name": &"idle",
+"name": &"IDLE",
 "speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7pqkx")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_uw77l")
 }],
 "loop": false,
-"name": &"jumping",
+"name": &"JUMPING",
 "speed": 15.0
 }, {
 "frames": [{
@@ -188,7 +174,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_ge24q")
 }],
 "loop": true,
-"name": &"walking",
+"name": &"WALKING",
 "speed": 15.0
 }]
 
@@ -197,15 +183,13 @@ radius = 28.0
 height = 108.0
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
-velocity = Vector2(0, 6.18976e+06)
+velocity = Vector2(0, 1.12679e+07)
 script = ExtResource("1_oul6g")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.223958, 0.223958)
 sprite_frames = SubResource("SpriteFrames_2uw36")
-animation = &"walking"
-frame = 7
-frame_progress = 0.201965
+animation = &"IDLE"
 script = ExtResource("3_2ieo8")
 
 [node name="ColorRect" type="ColorRect" parent="."]
