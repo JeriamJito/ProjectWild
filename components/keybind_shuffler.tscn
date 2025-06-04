@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtt0b0se18w0v"]
+
+[ext_resource type="Script" uid="uid://d2qgcr36k52f" path="res://components/keybind_shuffler.gd" id="1_ijmdc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_skduc"]
+size = Vector2(40, 300)
+
+[node name="KeybindShuffler" type="Area2D"]
+monitorable = false
+script = ExtResource("1_ijmdc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_skduc")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

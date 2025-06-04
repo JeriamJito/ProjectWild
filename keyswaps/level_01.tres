@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="Keyswap" load_steps=7 format=3 uid="uid://duj7avy8paiwn"]
+
+[ext_resource type="Script" uid="uid://cmqtcxpbmv3yf" path="res://resources/keyswap_definitions.gd" id="1_u1jo8"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_obu4w"]
+device = -1
+physical_keycode = 32
+unicode = 32
+
+[sub_resource type="InputEventKey" id="InputEventKey_ikcqr"]
+device = -1
+physical_keycode = 87
+unicode = 119
+
+[sub_resource type="InputEventKey" id="InputEventKey_u1jo8"]
+device = -1
+physical_keycode = 68
+unicode = 100
+
+[sub_resource type="InputEventKey" id="InputEventKey_cll84"]
+device = -1
+physical_keycode = 65
+unicode = 97
+
+[sub_resource type="InputEventMouseButton" id="InputEventMouseButton_u1jo8"]
+button_mask = 2
+position = Vector2(244, 10)
+global_position = Vector2(258, 83)
+button_index = 2
+pressed = true
+
+[resource]
+script = ExtResource("1_u1jo8")
+left = SubResource("InputEventKey_u1jo8")
+right = SubResource("InputEventKey_cll84")
+jump = SubResource("InputEventKey_ikcqr")
+drop = SubResource("InputEventKey_obu4w")
+whip = SubResource("InputEventMouseButton_u1jo8")
+metadata/_custom_type_script = "uid://cmqtcxpbmv3yf"
