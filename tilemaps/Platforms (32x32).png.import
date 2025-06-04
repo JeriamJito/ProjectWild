@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://do5pxi7gvls7u"
-path="res://.godot/imported/Terrain_32x32.webp-00c8d77f5803053eba981b03d827ad23.ctex"
+uid="uid://d2o8hor3qbxho"
+path="res://.godot/imported/Platforms (32x32).png-ba16388085ce5ef9f53e0648e8387bff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tilemaps/Terrain_32x32.webp"
-dest_files=["res://.godot/imported/Terrain_32x32.webp-00c8d77f5803053eba981b03d827ad23.ctex"]
+source_file="res://tilemaps/Platforms (32x32).png"
+dest_files=["res://.godot/imported/Platforms (32x32).png-ba16388085ce5ef9f53e0648e8387bff.ctex"]
 
 [params]
 
