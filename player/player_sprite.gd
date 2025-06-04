@@ -4,7 +4,7 @@ const STATES = Globals.STATES
 
 @onready var parent : Actor = get_parent()
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if parent.state != STATES.WALKING or parent.direction == 0.0:
 		stop()
 		return
