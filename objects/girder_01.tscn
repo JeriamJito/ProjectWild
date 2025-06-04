@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://4ni8vp7ur8wb"]
+
+[ext_resource type="Texture2D" uid="uid://bi24tkua4ebl8" path="res://objects/Big metal bar that the vine will grab.png" id="1_1x427"]
+[ext_resource type="PackedScene" uid="uid://delifm0dbrp0n" path="res://components/grapple_point.tscn" id="2_7ea4q"]
+
+[node name="Girder01" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_1x427")
+region_enabled = true
+region_rect = Rect2(20.4993, 19.8333, 108, 192.667)
+
+[node name="GrapplePoint" parent="." instance=ExtResource("2_7ea4q")]
+position = Vector2(-11, 87)
