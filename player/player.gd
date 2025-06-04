@@ -1,3 +1,4 @@
+@tool
 extends CharacterBody2D
 class_name Actor
 
@@ -15,12 +16,17 @@ signal velocity_change
 @onready var jump_timer: Timer = %JumpTimer
 @onready var remote_transform_2d: RemoteTransform2D = %RemoteTransform2D
 
-var state := STATES.IDLE
+var state := STATES.FALLING
 var direction := 0.0
 var last_direction := 1
 
 
 func _physics_process(_delta : float) -> void:
+	move_and_slide()
+	
+	if Engine.is_editor_hint():
+		return
+	
 	global_rotation = 0.0
 	direction = Input.get_axis("move_left", "move_right")
 	
@@ -63,8 +69,6 @@ func _physics_process(_delta : float) -> void:
 		climbing_timeout.stop()
 		
 	coyote_check()
-	
-	move_and_slide()
 	
 	velocity_change.emit(velocity)
 
