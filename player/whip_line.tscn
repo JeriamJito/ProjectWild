@@ -20,6 +20,7 @@ angular_limit_upper = -1.39626
 unique_name_in_owner = true
 
 [node name="ColorRect" type="ColorRect" parent="AttachmentPoint"]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -38,6 +39,7 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="ColorRect" type="ColorRect" parent="PlayerPoint"]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
