@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dfipd6t0uiicv"]
+[gd_scene load_steps=24 format=3 uid="uid://dfipd6t0uiicv"]
 
 [ext_resource type="Script" uid="uid://c72hkr6kj7ckv" path="res://player/player.gd" id="1_oul6g"]
 [ext_resource type="Texture2D" uid="uid://djg1bdqheb5a0" path="res://player/Running sprite - Protagonist.png" id="2_8t03j"]
