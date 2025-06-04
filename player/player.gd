@@ -22,10 +22,10 @@ var last_direction := 1
 
 
 func _physics_process(_delta : float) -> void:
-	move_and_slide()
-	
 	if Engine.is_editor_hint():
 		return
+	
+	move_and_slide()
 	
 	global_rotation = 0.0
 	direction = Input.get_axis("move_left", "move_right")
