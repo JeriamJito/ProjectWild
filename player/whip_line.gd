@@ -51,7 +51,6 @@ func attach_player() -> void:
 	whip_vector = whip_vector.normalized()
 	var force_vector := Vector2(-whip_vector.y, whip_vector.x)
 	var applied_force : float = max(initial_force, cached_velocity)
-	print(cached_velocity, " ", applied_force)
 	player_point.apply_impulse(
 		force_vector * -player.last_direction * applied_force)
 
