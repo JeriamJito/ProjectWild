@@ -21,6 +21,8 @@ func compile_keybinds() -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if get_tree().get_first_node_in_group("Player") != body:
 		return
+	
+	body.keyswap_areas += 1
 
 	for key in compiled_actions:
 		if not compiled_actions[key]:
@@ -31,6 +33,10 @@ func _on_body_entered(body: Node2D) -> void:
 
 func _on_body_exited(body: Node2D) -> void:
 	if get_tree().get_first_node_in_group("Player") != body:
+		return
+	
+	body.keyswap_areas -= 1
+	if body.keyswap_areas > 0:
 		return
 	
 	InputMap.load_from_project_settings()

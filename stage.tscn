@@ -1,46 +1,41 @@
-[gd_scene load_steps=13 format=4 uid="uid://2153uolid3xb"]
+[gd_scene load_steps=12 format=4 uid="uid://2153uolid3xb"]
 
 [ext_resource type="PackedScene" uid="uid://dfipd6t0uiicv" path="res://player/player.tscn" id="1_6eo5e"]
 [ext_resource type="TileSet" uid="uid://cvaj61kv2atjw" path="res://tilemaps/test_tiles.tres" id="1_rnkuw"]
-[ext_resource type="PackedScene" uid="uid://c05kl5ke1wrl3" path="res://debug/debug.tscn" id="2_aees8"]
 [ext_resource type="PackedScene" uid="uid://b7biu8m5guj0o" path="res://objects/girder_01.tscn" id="2_gx6sy"]
 [ext_resource type="PackedScene" uid="uid://dtt0b0se18w0v" path="res://components/keybind_shuffler.tscn" id="3_16g40"]
 [ext_resource type="Script" uid="uid://cmqtcxpbmv3yf" path="res://resources/keyswap_definitions.gd" id="4_vpggq"]
 
-[sub_resource type="InputEventKey" id="InputEventKey_obu4w"]
+[sub_resource type="InputEventKey" id="InputEventKey_vpggq"]
 device = -1
-physical_keycode = 32
-unicode = 32
+physical_keycode = 74
+unicode = 106
 
-[sub_resource type="InputEventKey" id="InputEventKey_ikcqr"]
+[sub_resource type="InputEventKey" id="InputEventKey_cll84"]
 device = -1
-physical_keycode = 87
-unicode = 119
+physical_keycode = 76
+unicode = 108
 
-[sub_resource type="InputEventKey" id="InputEventKey_u1jo8"]
+[sub_resource type="Resource" id="Resource_1edn8"]
+script = ExtResource("4_vpggq")
+left = SubResource("InputEventKey_vpggq")
+right = SubResource("InputEventKey_cll84")
+metadata/_custom_type_script = "uid://cmqtcxpbmv3yf"
+
+[sub_resource type="InputEventKey" id="InputEventKey_1edn8"]
 device = -1
 physical_keycode = 68
 unicode = 100
 
-[sub_resource type="InputEventKey" id="InputEventKey_cll84"]
+[sub_resource type="InputEventKey" id="InputEventKey_vsjsl"]
 device = -1
 physical_keycode = 65
 unicode = 97
 
-[sub_resource type="InputEventMouseButton" id="InputEventMouseButton_u1jo8"]
-button_mask = 2
-position = Vector2(244, 10)
-global_position = Vector2(258, 83)
-button_index = 2
-pressed = true
-
-[sub_resource type="Resource" id="Resource_1edn8"]
+[sub_resource type="Resource" id="Resource_jx6rg"]
 script = ExtResource("4_vpggq")
-left = SubResource("InputEventKey_u1jo8")
-right = SubResource("InputEventKey_cll84")
-jump = SubResource("InputEventKey_ikcqr")
-drop = SubResource("InputEventKey_obu4w")
-whip = SubResource("InputEventMouseButton_u1jo8")
+left = SubResource("InputEventKey_1edn8")
+right = SubResource("InputEventKey_vsjsl")
 metadata/_custom_type_script = "uid://cmqtcxpbmv3yf"
 
 [node name="Level" type="Node2D"]
@@ -61,12 +56,15 @@ keyswap = SubResource("Resource_1edn8")
 [node name="CollisionPolygon2D" parent="Stage/KeybindShuffler" index="0"]
 polygon = PackedVector2Array(-253, -64, -266, 158, 155, 155, 152, -50)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="KeybindShuffler2" parent="Stage" instance=ExtResource("3_16g40")]
+position = Vector2(1435, 860)
+keyswap = SubResource("Resource_jx6rg")
 
-[node name="Debug" parent="CanvasLayer" instance=ExtResource("2_aees8")]
+[node name="CollisionPolygon2D" parent="Stage/KeybindShuffler2" index="0"]
+polygon = PackedVector2Array(-253, -64, -266, 158, 155, 155, 152, -50)
 
 [node name="Camera2D" type="Camera2D" parent="." groups=["Camera"]]
-position = Vector2(1296, 937.999)
+position = Vector2(1295.75, 937.999)
 offset = Vector2(0, -200)
 zoom = Vector2(0.8, 0.8)
 position_smoothing_speed = 10.0
@@ -77,7 +75,7 @@ drag_bottom_margin = 0.0
 editor_draw_drag_margin = true
 
 [node name="Player" parent="." instance=ExtResource("1_6eo5e")]
-position = Vector2(1296, 937.999)
+position = Vector2(1295.75, 937.999)
 velocity = Vector2(0, 125)
 
 [node name="TopRayCast" parent="Player" index="10"]
@@ -87,7 +85,10 @@ hit_from_inside = true
 remote_path = NodePath("../../Camera2D")
 
 [connection signal="body_exited" from="Stage/KeybindShuffler" to="Stage/KeybindShuffler" method="_on_body_exited"]
+[connection signal="body_shape_entered" from="Stage/KeybindShuffler" to="Stage/KeybindShuffler" method="_on_body_shape_entered"]
+[connection signal="body_exited" from="Stage/KeybindShuffler2" to="Stage/KeybindShuffler2" method="_on_body_exited"]
+[connection signal="body_shape_entered" from="Stage/KeybindShuffler2" to="Stage/KeybindShuffler2" method="_on_body_shape_entered"]
 
 [editable path="Stage/KeybindShuffler"]
-[editable path="CanvasLayer/Debug"]
+[editable path="Stage/KeybindShuffler2"]
 [editable path="Player"]

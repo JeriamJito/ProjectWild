@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dfipd6t0uiicv"]
+[gd_scene load_steps=24 format=3 uid="uid://dfipd6t0uiicv"]
 
 [ext_resource type="Script" uid="uid://c72hkr6kj7ckv" path="res://player/player.gd" id="1_oul6g"]
 [ext_resource type="Texture2D" uid="uid://djg1bdqheb5a0" path="res://player/Running sprite - Protagonist.png" id="2_8t03j"]
@@ -89,8 +89,8 @@ radius = 28.0
 height = 108.0
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
-position = Vector2(0, 1.83838e+07)
-velocity = Vector2(0, 532500)
+position = Vector2(0, 1.49898e+08)
+velocity = Vector2(0, 1.50213e+06)
 script = ExtResource("1_oul6g")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]

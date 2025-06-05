@@ -19,6 +19,7 @@ signal velocity_change
 var state := STATES.FALLING
 var direction := 0.0
 var last_direction := 1
+var keyswap_areas := 0
 
 
 func _physics_process(_delta : float) -> void:
