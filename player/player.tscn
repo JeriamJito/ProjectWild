@@ -287,7 +287,7 @@ script = ExtResource("8_8t03j")
 
 [node name="TopRayCast" type="RayCast2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(0, -50)
+position = Vector2(0, -30)
 hit_from_inside = true
 
 [node name="CoyoteTime" type="Timer" parent="."]

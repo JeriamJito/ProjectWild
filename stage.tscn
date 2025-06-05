@@ -136,9 +136,6 @@ physics = 0
 [node name="FrontRayCast" parent="Player" index="9"]
 hit_from_inside = true
 
-[node name="TopRayCast" parent="Player" index="10"]
-hit_from_inside = true
-
 [node name="RemoteTransform2D" parent="Player" index="14"]
 remote_path = NodePath("../../Camera2D")
 
