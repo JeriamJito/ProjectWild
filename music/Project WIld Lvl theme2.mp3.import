@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c2i0c6fitp4pb"
+path="res://.godot/imported/Project WIld Lvl theme2.mp3-25bb4ad9b896154d898f6ee104bc8c5a.mp3str"
+
+[deps]
+
+source_file="res://music/Project WIld Lvl theme2.mp3"
+dest_files=["res://.godot/imported/Project WIld Lvl theme2.mp3-25bb4ad9b896154d898f6ee104bc8c5a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=4 uid="uid://2153uolid3xb"]
+[gd_scene load_steps=17 format=4 uid="uid://2153uolid3xb"]
 
 [ext_resource type="PackedScene" uid="uid://dfipd6t0uiicv" path="res://player/player.tscn" id="1_6eo5e"]
 [ext_resource type="TileSet" uid="uid://cvaj61kv2atjw" path="res://tilemaps/test_tiles.tres" id="1_rnkuw"]
 [ext_resource type="PackedScene" uid="uid://b7biu8m5guj0o" path="res://objects/girder_01.tscn" id="2_gx6sy"]
 [ext_resource type="PackedScene" uid="uid://dtt0b0se18w0v" path="res://components/keybind_shuffler.tscn" id="3_gx6sy"]
 [ext_resource type="Script" uid="uid://cmqtcxpbmv3yf" path="res://resources/keyswap_definitions.gd" id="4_16g40"]
+[ext_resource type="AudioStream" uid="uid://c2i0c6fitp4pb" path="res://music/Project WIld Lvl theme2.mp3" id="6_vpggq"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_16g40"]
 device = -1
@@ -144,6 +145,12 @@ remote_path = NodePath("../../Camera2D")
 
 [node name="PlatformTest" parent="Player" index="15"]
 test_direction = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_vpggq")
+volume_db = -6.0
+autoplay = true
+parameters/looping = true
 
 [editable path="Stage/KeybindShuffler"]
 [editable path="Stage/KeybindShuffler2"]
