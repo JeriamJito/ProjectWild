@@ -281,14 +281,14 @@ shape = SubResource("CapsuleShape2D_rkbax")
 
 [node name="FrontRayCast" type="RayCast2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(0, -30)
+position = Vector2(0, -10)
 target_position = Vector2(50, 0)
 script = ExtResource("8_8t03j")
 
 [node name="TopRayCast" type="RayCast2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(0, -75)
-target_position = Vector2(0, 75)
+position = Vector2(0, -50)
+hit_from_inside = true
 
 [node name="CoyoteTime" type="Timer" parent="."]
 unique_name_in_owner = true
