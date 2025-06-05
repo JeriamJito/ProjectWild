@@ -11,10 +11,13 @@ const STATES = Globals.STATES
 @onready var pin_joint_2d: PinJoint2D = %PinJoint2D
 @onready var player : Actor = get_tree().get_first_node_in_group("Player")
 @onready var vine_line: Line2D = %VineLine
+@onready var remote_transform_2d: RemoteTransform2D = %RemoteTransform2D
 
 func _physics_process(_delta: float) -> void:
 	if player.state != STATES.SWINGING:
 		return
+	
+	player.rotation = player_point.rotation
 	
 	var direction := Input.get_axis("move_left", "move_right")
 	if direction == 0.0:
@@ -43,9 +46,8 @@ func create_pinjoint() -> void:
 
 
 func attach_player() -> void:
-	player.reparent(player_point)
-	var camera_path = get_tree().get_first_node_in_group("Camera").get_path()
-	player.remote_transform_2d.remote_path = camera_path
+	player.global_position = player_point.global_position
+	remote_transform_2d.remote_path = player.get_path()
 	var cached_velocity = player.velocity.y
 	player.velocity = Vector2.ZERO
 	var whip_vector := player_point.position - attachment_point.position

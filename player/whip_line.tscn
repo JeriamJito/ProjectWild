@@ -57,6 +57,10 @@ color = Color(0, 0, 0, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerPoint"]
 shape = SubResource("RectangleShape2D_44o1s")
 
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PlayerPoint"]
+unique_name_in_owner = true
+update_scale = false
+
 [node name="VineLine" type="Line2D" parent="."]
 unique_name_in_owner = true
 z_index = -1
