@@ -13,10 +13,10 @@ tile_map_data = PackedByteArray("AAAVAB8AAAAIAAIAAAAWAB8AAAACAAIAAAAXAB8AAAACAAI
 tile_set = ExtResource("1_rnkuw")
 
 [node name="Girder" parent="Stage" instance=ExtResource("2_gx6sy")]
-position = Vector2(971, 446)
+position = Vector2(1296, 383)
 
 [node name="Camera2D" type="Camera2D" parent="." groups=["Camera"]]
-position = Vector2(1410.11, 938.009)
+position = Vector2(1410.32, 937.996)
 offset = Vector2(0, -200)
 zoom = Vector2(0.8, 0.8)
 position_smoothing_speed = 10.0
@@ -27,7 +27,7 @@ drag_bottom_margin = 0.0
 editor_draw_drag_margin = true
 
 [node name="Player" parent="." instance=ExtResource("1_6eo5e")]
-position = Vector2(1410.11, 938.009)
+position = Vector2(1410.32, 937.996)
 velocity = Vector2(0, 125)
 
 [node name="TopRayCast" parent="Player" index="10"]
