@@ -66,11 +66,9 @@ func _physics_process(_delta : float) -> void:
 		attempt_change_state.emit(STATES.SWINGING)
 	
 	if Input.is_action_just_pressed("jump"):
-		if state in [STATES.IDLE, STATES.WALKING, STATES.COYOTE]:
+		if state in [STATES.IDLE, STATES.WALKING, STATES.COYOTE, STATES.SWINGING]:
 			change_state.emit(STATES.JUMPING)
 			jump_timer.start()
-		elif state in [STATES.SWINGING]:
-			change_state.emit(STATES.JUMPING)
 		
 	if not Input.is_action_pressed("jump") and \
 			state == STATES.JUMPING and jump_timer.is_stopped():
