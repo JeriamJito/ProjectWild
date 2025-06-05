@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bvs4eh7v0x3ct"
+path="res://.godot/imported/Project Wild MainMenu theme2.mp3-45eceda1fa675dfb8dea20348c7306b4.mp3str"
+
+[deps]
+
+source_file="res://music/Project Wild MainMenu theme2.mp3"
+dest_files=["res://.godot/imported/Project Wild MainMenu theme2.mp3-45eceda1fa675dfb8dea20348c7306b4.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

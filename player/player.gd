@@ -18,6 +18,7 @@ signal velocity_change
 @onready var jump_timer: Timer = %JumpTimer
 @onready var remote_transform_2d: RemoteTransform2D = %RemoteTransform2D
 @onready var player_sprite: AnimatedSprite2D = %PlayerSprite
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = %AudioStreamPlayer2D
 
 var state := STATES.FALLING
 var direction := 0.0
@@ -61,6 +62,7 @@ func _physics_process(_delta : float) -> void:
 			can_ledge_grab() and climbing_timeout.is_stopped():
 		climbing_timeout.start()
 		change_state.emit(STATES.CLIMBING)
+		audio_stream_player_2d.play()
 	elif state in [STATES.JUMPING, STATES.FALLING, STATES.SWINGING] and \
 			Input.is_action_just_pressed("whip_use"):
 		attempt_change_state.emit(STATES.SWINGING)
