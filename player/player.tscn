@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://dfipd6t0uiicv"]
+[gd_scene load_steps=47 format=3 uid="uid://dfipd6t0uiicv"]
 
 [ext_resource type="Script" uid="uid://c72hkr6kj7ckv" path="res://player/player.gd" id="1_oul6g"]
 [ext_resource type="Texture2D" uid="uid://djg1bdqheb5a0" path="res://player/Running sprite - Protagonist.png" id="2_8t03j"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://b3grspwqj5bit" path="res://components/whip_attach.tscn" id="8_hg6s5"]
 [ext_resource type="PackedScene" uid="uid://c12gwndp1uahl" path="res://tools/platform_test.tscn" id="10_2ieo8"]
 [ext_resource type="PackedScene" uid="uid://bp08s4xd8fikm" path="res://components/keyswap_notification.tscn" id="16_32hag"]
+[ext_resource type="AudioStream" uid="uid://wyelsror74mp" path="res://sfx/ledge_grab.wav" id="17_tqiix"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wodsf"]
 atlas = ExtResource("2_kb6p2")
@@ -313,5 +314,9 @@ unique_name_in_owner = true
 [node name="KeyswapNotification" parent="." instance=ExtResource("16_32hag")]
 position = Vector2(0, -84)
 scale = Vector2(5.14286, 5.14286)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("17_tqiix")
 
 [connection signal="set_grapple_point" from="Whip" to="WhipAttach" method="_on_whip_set_grapple_point"]
