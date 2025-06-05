@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d2qgcr36k52f" path="res://components/keybind_shuffler.gd" id="1_ijmdc"]
 
-[node name="KeybindShuffler" type="Area2D"]
+[node name="KeybindShuffler" type="Area2D" groups=["KeybindShuffler"]]
 monitorable = false
 script = ExtResource("1_ijmdc")
 

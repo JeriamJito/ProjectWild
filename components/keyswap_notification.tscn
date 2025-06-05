@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://bp08s4xd8fikm"]
+
+[ext_resource type="Texture2D" uid="uid://df0cgirlooah6" path="res://components/exclamation-7x8.png" id="1_f8rtk"]
+[ext_resource type="Script" uid="uid://caknamu1yav33" path="res://components/keyswap_notification.gd" id="2_151on"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_151on"]
+atlas = ExtResource("1_f8rtk")
+region = Rect2(0, 0, 7, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_08cpg"]
+atlas = ExtResource("1_f8rtk")
+region = Rect2(7, 0, 7, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wt5yo"]
+atlas = ExtResource("1_f8rtk")
+region = Rect2(14, 0, 7, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4y04w"]
+atlas = ExtResource("1_f8rtk")
+region = Rect2(21, 0, 7, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bdtdo"]
+atlas = ExtResource("1_f8rtk")
+region = Rect2(28, 0, 7, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7a5s"]
+atlas = ExtResource("1_f8rtk")
+region = Rect2(35, 0, 7, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sqkpg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_151on")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_08cpg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wt5yo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4y04w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bdtdo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n7a5s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[node name="KeyswapNotification" type="AnimatedSprite2D"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_sqkpg")
+script = ExtResource("2_151on")
+
+[node name="Timeout" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[connection signal="timeout" from="Timeout" to="." method="_on_timeout_timeout"]
