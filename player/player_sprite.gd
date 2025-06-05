@@ -12,3 +12,7 @@ func _physics_process(_delta: float) -> void:
 	if flip_h and parent.direction < 0.0 or not flip_h and parent.direction > 0.0:
 		flip_h = !flip_h
 	
+	if parent.state == STATES.SWINGING:
+		rotation = parent.get_parent().rotation
+	else:
+		rotation = 0.0
