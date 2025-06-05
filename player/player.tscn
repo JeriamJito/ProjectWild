@@ -238,14 +238,14 @@ radius = 28.0
 height = 108.0
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
-position = Vector2(0, 5.17706e+09)
-velocity = Vector2(0, 8.81276e+06)
+velocity = Vector2(0, 1.54272e+07)
 script = ExtResource("1_oul6g")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
 scale = Vector2(0.223958, 0.223958)
 sprite_frames = SubResource("SpriteFrames_2uw36")
-animation = &"SWINGING"
+animation = &"FALLING"
 script = ExtResource("3_2ieo8")
 
 [node name="ColorRect" type="ColorRect" parent="."]

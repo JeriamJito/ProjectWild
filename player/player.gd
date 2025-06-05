@@ -17,18 +17,30 @@ signal velocity_change
 @onready var climbing_timeout: ClimbingTimer = %ClimbingTimeout
 @onready var jump_timer: Timer = %JumpTimer
 @onready var remote_transform_2d: RemoteTransform2D = %RemoteTransform2D
+@onready var player_sprite: AnimatedSprite2D = %PlayerSprite
 
 var state := STATES.FALLING
 var direction := 0.0
 var last_direction := 1
 var keyswap_areas := 0
 
+func _ready() -> void:
+	velocity = Vector2.ZERO
+
 
 func _physics_process(_delta : float) -> void:
+	if Engine.is_editor_hint() and physics == 1:
+		return
+	
 	var collided = move_and_slide()
 	
 	if Engine.is_editor_hint():
 		return
+		
+	if state == STATES.SWINGING:
+		player_sprite.offset = Vector2(126.0 * -last_direction, 250.0)
+	else:
+		player_sprite.offset = Vector2.ZERO
 	
 	if state == STATES.SWINGING and collided:
 		change_state.emit(STATES.FALLING)
