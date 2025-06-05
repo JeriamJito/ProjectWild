@@ -10,6 +10,7 @@ const STATES = Globals.STATES
 @onready var player_point: RigidBody2D = %PlayerPoint
 @onready var pin_joint_2d: PinJoint2D = %PinJoint2D
 @onready var player : Actor = get_tree().get_first_node_in_group("Player")
+@onready var vine_line: Line2D = %VineLine
 
 func _physics_process(_delta: float) -> void:
 	if player.state != STATES.SWINGING:

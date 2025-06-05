@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cfihhix31845j"]
+[gd_scene load_steps=4 format=3 uid="uid://cfihhix31845j"]
 
 [ext_resource type="Script" uid="uid://ckmati3gn7pqj" path="res://player/whip_line.gd" id="1_44o1s"]
+[ext_resource type="Script" uid="uid://8gm47oy3v3v" path="res://player/vine_line.gd" id="2_tym7t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_44o1s"]
 
@@ -55,3 +56,11 @@ color = Color(0, 0, 0, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerPoint"]
 shape = SubResource("RectangleShape2D_44o1s")
+
+[node name="VineLine" type="Line2D" parent="."]
+unique_name_in_owner = true
+z_index = -1
+points = PackedVector2Array(0, 0, 0, 50)
+width = 7.0
+default_color = Color(0.2, 0.247059, 0.0941176, 1)
+script = ExtResource("2_tym7t")
