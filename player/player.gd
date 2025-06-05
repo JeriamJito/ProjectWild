@@ -21,15 +21,17 @@ signal velocity_change
 var state := STATES.FALLING
 var direction := 0.0
 var last_direction := 1
+var keyswap_areas := 0
+
 
 func _physics_process(_delta : float) -> void:
-	if Engine.is_editor_hint() and physics == 1:
-		return
-	
-	move_and_slide()
+	var collided = move_and_slide()
 	
 	if Engine.is_editor_hint():
 		return
+	
+	if state == STATES.SWINGING and collided:
+		change_state.emit(STATES.FALLING)
 	
 	global_rotation = 0.0
 	direction = Input.get_axis("move_left", "move_right")
