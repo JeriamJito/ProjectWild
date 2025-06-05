@@ -1,8 +1,66 @@
-[gd_scene load_steps=4 format=4 uid="uid://2153uolid3xb"]
+[gd_scene load_steps=16 format=4 uid="uid://2153uolid3xb"]
 
 [ext_resource type="PackedScene" uid="uid://dfipd6t0uiicv" path="res://player/player.tscn" id="1_6eo5e"]
 [ext_resource type="TileSet" uid="uid://cvaj61kv2atjw" path="res://tilemaps/test_tiles.tres" id="1_rnkuw"]
 [ext_resource type="PackedScene" uid="uid://b7biu8m5guj0o" path="res://objects/girder_01.tscn" id="2_gx6sy"]
+[ext_resource type="PackedScene" uid="uid://dtt0b0se18w0v" path="res://components/keybind_shuffler.tscn" id="3_gx6sy"]
+[ext_resource type="Script" uid="uid://cmqtcxpbmv3yf" path="res://resources/keyswap_definitions.gd" id="4_16g40"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_16g40"]
+device = -1
+physical_keycode = 72
+unicode = 104
+
+[sub_resource type="InputEventKey" id="InputEventKey_g8oy1"]
+device = -1
+physical_keycode = 55
+unicode = 55
+
+[sub_resource type="InputEventKey" id="InputEventKey_i76fu"]
+device = -1
+physical_keycode = 71
+unicode = 103
+
+[sub_resource type="InputEventKey" id="InputEventKey_uis2a"]
+device = -1
+physical_keycode = 74
+unicode = 106
+
+[sub_resource type="Resource" id="Resource_m1lne"]
+script = ExtResource("4_16g40")
+left = SubResource("InputEventKey_i76fu")
+right = SubResource("InputEventKey_uis2a")
+jump = SubResource("InputEventKey_g8oy1")
+drop = SubResource("InputEventKey_16g40")
+metadata/_custom_type_script = "uid://cmqtcxpbmv3yf"
+
+[sub_resource type="InputEventKey" id="InputEventKey_vpggq"]
+device = -1
+physical_keycode = 75
+unicode = 107
+
+[sub_resource type="InputEventKey" id="InputEventKey_1edn8"]
+device = -1
+physical_keycode = 66
+unicode = 98
+
+[sub_resource type="InputEventKey" id="InputEventKey_vsjsl"]
+device = -1
+physical_keycode = 74
+unicode = 106
+
+[sub_resource type="InputEventKey" id="InputEventKey_jx6rg"]
+device = -1
+physical_keycode = 76
+unicode = 108
+
+[sub_resource type="Resource" id="Resource_g8oy1"]
+script = ExtResource("4_16g40")
+left = SubResource("InputEventKey_vsjsl")
+right = SubResource("InputEventKey_jx6rg")
+jump = SubResource("InputEventKey_1edn8")
+drop = SubResource("InputEventKey_vpggq")
+metadata/_custom_type_script = "uid://cmqtcxpbmv3yf"
 
 [node name="Level" type="Node2D"]
 
@@ -45,8 +103,20 @@ position = Vector2(1289, -445)
 [node name="Girder2" parent="Stage" instance=ExtResource("2_gx6sy")]
 position = Vector2(4275, -1832)
 
+[node name="KeybindShuffler" parent="Stage" instance=ExtResource("3_gx6sy")]
+keyswap = SubResource("Resource_m1lne")
+
+[node name="CollisionPolygon2D" parent="Stage/KeybindShuffler" index="0"]
+polygon = PackedVector2Array(-3125, -1538, -282, -1510, -310, -8815, -3195, -8703)
+
+[node name="KeybindShuffler2" parent="Stage" instance=ExtResource("3_gx6sy")]
+keyswap = SubResource("Resource_g8oy1")
+
+[node name="CollisionPolygon2D" parent="Stage/KeybindShuffler2" index="0"]
+polygon = PackedVector2Array(2280, 1235, 5335, 1207, 5367, -8823, 2246, -8814)
+
 [node name="Camera2D" type="Camera2D" parent="." groups=["Camera"]]
-position = Vector2(927, 910.926)
+position = Vector2(927, 910.995)
 scale = Vector2(1.5, 1.5)
 offset = Vector2(0, -200)
 zoom = Vector2(0.8, 0.8)
@@ -58,7 +128,7 @@ drag_bottom_margin = 0.0
 editor_draw_drag_margin = true
 
 [node name="Player" parent="." instance=ExtResource("1_6eo5e")]
-position = Vector2(927, 910.926)
+position = Vector2(927, 910.995)
 scale = Vector2(1.5, 1.5)
 velocity = Vector2(0, 125)
 physics = 0
@@ -75,4 +145,6 @@ remote_path = NodePath("../../Camera2D")
 [node name="PlatformTest" parent="Player" index="15"]
 test_direction = 1
 
+[editable path="Stage/KeybindShuffler"]
+[editable path="Stage/KeybindShuffler2"]
 [editable path="Player"]
