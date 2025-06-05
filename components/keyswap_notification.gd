@@ -1,5 +1,7 @@
 extends AnimatedSprite2D
 
+const STATES = Globals.STATES
+
 @onready var timeout: Timer = %Timeout
 
 func _ready() -> void:
@@ -21,7 +23,7 @@ func _process(_delta: float) -> void:
 
 
 func show_notification(body: Node2D) -> void:
-	if get_tree().get_first_node_in_group("Player") != body:
+	if body.state in [STATES.JUMPING, STATES.SWINGING]:
 		return
 	
 	timeout.stop()
