@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://2153uolid3xb"]
+[gd_scene load_steps=22 format=4 uid="uid://2153uolid3xb"]
 
 [ext_resource type="PackedScene" uid="uid://dfipd6t0uiicv" path="res://player/player.tscn" id="1_6eo5e"]
 [ext_resource type="TileSet" uid="uid://cvaj61kv2atjw" path="res://tilemaps/test_tiles.tres" id="1_rnkuw"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://cmqtcxpbmv3yf" path="res://resources/keyswap_definitions.gd" id="4_16g40"]
 [ext_resource type="Script" uid="uid://c13ue1s5b61j8" path="res://exit.gd" id="5_1edn8"]
 [ext_resource type="AudioStream" uid="uid://c2i0c6fitp4pb" path="res://music/Project WIld Lvl theme2.mp3" id="6_vpggq"]
+[ext_resource type="PackedScene" uid="uid://cyruc8iox0qg6" path="res://background/parallax_background.tscn" id="9_g8oy1"]
 [ext_resource type="PackedScene" uid="uid://yft4nfrg3ea2" path="res://scenes/scene_transition.tscn" id="9_jx6rg"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_16g40"]
@@ -132,7 +133,7 @@ script = ExtResource("5_1edn8")
 shape = SubResource("RectangleShape2D_vpggq")
 
 [node name="Camera2D" type="Camera2D" parent="." groups=["Camera"]]
-position = Vector2(931, 910.961)
+position = Vector2(1053, 910.994)
 scale = Vector2(1.5, 1.5)
 offset = Vector2(0, -200)
 zoom = Vector2(0.8, 0.8)
@@ -144,9 +145,9 @@ drag_bottom_margin = 0.0
 editor_draw_drag_margin = true
 
 [node name="Player" parent="." instance=ExtResource("1_6eo5e")]
-position = Vector2(931, 910.961)
+position = Vector2(1053, 910.994)
 scale = Vector2(1.5, 1.5)
-velocity = Vector2(0, 164250)
+velocity = Vector2(0, 74625)
 
 [node name="FrontRayCast" parent="Player" index="9"]
 hit_from_inside = true
@@ -162,6 +163,8 @@ stream = ExtResource("6_vpggq")
 volume_db = -6.0
 autoplay = true
 parameters/looping = true
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("9_g8oy1")]
 
 [node name="SceneTransition" parent="." instance=ExtResource("9_jx6rg")]
 unique_name_in_owner = true
