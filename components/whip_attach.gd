@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var color_rect: ColorRect = %ColorRect
+@onready var color_rect: Sprite2D = %ColorRect
 
 var attach_index := -1:
 	set(new_index):
