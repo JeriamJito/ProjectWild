@@ -1,7 +1,8 @@
-[gd_scene load_steps=47 format=3 uid="uid://dfipd6t0uiicv"]
+[gd_scene load_steps=49 format=3 uid="uid://dfipd6t0uiicv"]
 
 [ext_resource type="Script" uid="uid://c72hkr6kj7ckv" path="res://player/player.gd" id="1_oul6g"]
 [ext_resource type="Texture2D" uid="uid://djg1bdqheb5a0" path="res://player/Running sprite - Protagonist.png" id="2_8t03j"]
+[ext_resource type="Texture2D" uid="uid://cp11gkgbkfj27" path="res://player/Protagonist grabbing edge.png" id="2_e7oew"]
 [ext_resource type="Texture2D" uid="uid://5oq5trd7e82l" path="res://player/Protagonist jumping.png" id="2_kb6p2"]
 [ext_resource type="PackedScene" uid="uid://ckephimkda3cb" path="res://components/gravity.tscn" id="2_rkbax"]
 [ext_resource type="Texture2D" uid="uid://b1xcd5h2sbbav" path="res://player/protagonist idleFixed.png" id="2_yllr7"]
@@ -17,6 +18,10 @@
 [ext_resource type="PackedScene" uid="uid://c12gwndp1uahl" path="res://tools/platform_test.tscn" id="10_2ieo8"]
 [ext_resource type="PackedScene" uid="uid://bp08s4xd8fikm" path="res://components/keyswap_notification.tscn" id="16_32hag"]
 [ext_resource type="AudioStream" uid="uid://wyelsror74mp" path="res://sfx/ledge_grab.wav" id="17_tqiix"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_art4l"]
+atlas = ExtResource("2_e7oew")
+region = Rect2(1152, 0, 384, 540)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wodsf"]
 atlas = ExtResource("2_kb6p2")
@@ -128,6 +133,14 @@ region = Rect2(384, 540, 384, 540)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2uw36"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_art4l")
+}],
+"loop": true,
+"name": &"CLIMBING",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wodsf")
@@ -246,7 +259,7 @@ script = ExtResource("1_oul6g")
 unique_name_in_owner = true
 scale = Vector2(0.223958, 0.223958)
 sprite_frames = SubResource("SpriteFrames_2uw36")
-animation = &"FALLING"
+animation = &"CLIMBING"
 script = ExtResource("3_2ieo8")
 
 [node name="ColorRect" type="ColorRect" parent="."]
