@@ -1,0 +1,65 @@
+[gd_scene load_steps=5 format=3 uid="uid://im73hee6cgcd"]
+
+[ext_resource type="Theme" uid="uid://qqv0b4we58a6" path="res://scenes/menu_theme.tres" id="1_2x1jc"]
+[ext_resource type="Theme" uid="uid://bwn6jdwu2mlkj" path="res://scenes/body.tres" id="2_nfmnx"]
+[ext_resource type="Script" uid="uid://duyjy0dhuh0mb" path="res://scenes/credits_back.gd" id="3_qa3ag"]
+[ext_resource type="AudioStream" uid="uid://5qe6c28snuh" path="res://music/ProjectWild End theme.mp3" id="4_nfmnx"]
+
+[node name="Ending" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_2x1jc")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.6
+text = "The End"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("2_nfmnx")
+theme_override_constants/separation = 50
+
+[node name="Programmer" type="Label" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Thank You For Playing!"
+horizontal_alignment = 1
+
+[node name="EndBack" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.5
+text = "main menu"
+script = ExtResource("3_qa3ag")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_nfmnx")
+volume_db = -6.0
+autoplay = true
+
+[connection signal="pressed" from="VBoxContainer/EndBack" to="VBoxContainer/EndBack" method="_on_pressed"]

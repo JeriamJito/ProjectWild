@@ -30,7 +30,12 @@ func _ready() -> void:
 
 
 func _physics_process(_delta : float) -> void:
+	
 	if Engine.is_editor_hint() and physics == 1:
+		return
+		
+	var world : World = get_tree().get_first_node_in_group("World")
+	if not Engine.is_editor_hint() and world.state == Globals.WORLD_STATES.PAUSED:
 		return
 	
 	var collided = move_and_slide()

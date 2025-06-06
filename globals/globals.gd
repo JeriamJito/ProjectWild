@@ -10,3 +10,8 @@ enum STATES {
 	COYOTE,
 	SWINGING
 }
+
+enum WORLD_STATES {
+	RUNNING,
+	PAUSED
+}

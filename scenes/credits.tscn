@@ -59,7 +59,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 size_flags_stretch_ratio = 0.5
-text = "Back"
+text = "back"
 script = ExtResource("3_0ctdu")
 
 [connection signal="pressed" from="VBoxContainer/CreditsBack" to="VBoxContainer/CreditsBack" method="_on_pressed"]
