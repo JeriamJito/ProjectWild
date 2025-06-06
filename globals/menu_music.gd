@@ -4,5 +4,5 @@ const PROJECT_WILD_MAIN_MENU_THEME_2 = preload("res://music/Project Wild MainMen
 
 func _ready() -> void:
 	stream = PROJECT_WILD_MAIN_MENU_THEME_2
-	volume_db = -6.0
+	volume_db = -9.0
 	play()

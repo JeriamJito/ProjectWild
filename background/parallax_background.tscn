@@ -6,7 +6,7 @@
 
 [node name="Parallax2D" type="ParallaxLayer" parent="."]
 position = Vector2(947, 551)
-motion_scale = Vector2(0.05, 0.05)
+motion_scale = Vector2(0.01, 0.05)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
 texture_filter = 1
