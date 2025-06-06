@@ -117,7 +117,7 @@ keyswap = SubResource("Resource_g8oy1")
 polygon = PackedVector2Array(2280, 1235, 5335, 1207, 5367, -8823, 2246, -8814)
 
 [node name="Camera2D" type="Camera2D" parent="." groups=["Camera"]]
-position = Vector2(-1310, -4209.04)
+position = Vector2(-1310, -4209)
 scale = Vector2(1.5, 1.5)
 offset = Vector2(0, -200)
 zoom = Vector2(0.8, 0.8)
@@ -129,7 +129,7 @@ drag_bottom_margin = 0.0
 editor_draw_drag_margin = true
 
 [node name="Player" parent="." instance=ExtResource("1_6eo5e")]
-position = Vector2(-1310, -4209.04)
+position = Vector2(-1310, -4209)
 scale = Vector2(1.5, 1.5)
 velocity = Vector2(0, 125)
 physics = 0

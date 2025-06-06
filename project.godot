@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="Major Jam 7: Wild"
-run/main_scene="uid://2153uolid3xb"
+run/main_scene="uid://dtdnt3q7b8vi"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Globals="*res://globals/globals.gd"
+MenuMusic="*res://globals/menu_music.gd"
 
 [display]
 

@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://qqv0b4we58a6"]
+
+[ext_resource type="FontFile" uid="uid://bcs6o4er88myn" path="res://scenes/MinimalPixel v2.ttf" id="1_kf82m"]
+
+[resource]
+default_font = ExtResource("1_kf82m")
+default_font_size = 100

@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=3 uid="uid://d256xmyot6fng"]
+
+[ext_resource type="Theme" uid="uid://qqv0b4we58a6" path="res://scenes/menu_theme.tres" id="1_2ckv8"]
+[ext_resource type="Theme" uid="uid://bwn6jdwu2mlkj" path="res://scenes/body.tres" id="2_2ckv8"]
+[ext_resource type="Script" uid="uid://duyjy0dhuh0mb" path="res://scenes/credits_back.gd" id="3_0ctdu"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_2ckv8")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.6
+text = "Credits"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("2_2ckv8")
+theme_override_constants/separation = 50
+
+[node name="Programmer" type="Label" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Programmer - GalaxyMom"
+horizontal_alignment = 1
+
+[node name="Art" type="Label" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Art - Kaim"
+horizontal_alignment = 1
+
+[node name="Music" type="Label" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Music - Liam"
+horizontal_alignment = 1
+
+[node name="GameDesign" type="Label" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Game Design - JeriamJita"
+horizontal_alignment = 1
+
+[node name="CreditsBack" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.5
+text = "Back"
+script = ExtResource("3_0ctdu")
+
+[connection signal="pressed" from="VBoxContainer/CreditsBack" to="VBoxContainer/CreditsBack" method="_on_pressed"]
